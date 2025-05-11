@@ -104,10 +104,22 @@ namespace WatcHive.View
             else if (contenido is Pelicula peliData)
             {
                 //IMPLEMENTAR LO DE ARRIBA AQUI TAMBIEN
-                Pendientes pendiente = new Pendientes(usuarioLoged.username, peliData.id, false, DateTime.Now.Date, false);
-                peliData.insert();
-                pendiente.insert();
-                MessageBox.Show("Has añadido '" + peliData.nombre + "' a tu lista de pendientes");
+
+                yaExisteContenido = peliData.exists();
+                if (!yaExisteContenido)
+                    peliData.insert();
+
+                yaEnLista = usuarioLoged.contenidoEnListas(peliData.id);
+                if (yaEnLista)
+                {
+                    MessageBox.Show("Este contenido ya se encuentra en tu lista de vistos o pendientes.");
+                }
+                else
+                {
+                    Pendientes pendiente = new Pendientes(usuarioLoged.username, peliData.id, false, DateTime.Now.Date, false);
+                    pendiente.insert();
+                    MessageBox.Show("Has añadido '" + peliData.nombre + "' a tu lista de pendientes");
+                }
             }
 
             this.Close();

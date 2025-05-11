@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\DAM2\ProyectoFinal\WatcHive\WatcHive\obj\Debug\
+C:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\obj\Debug\
 WatcHive
 none
 false
 DEBUG;TRACE
-C:\DAM2\ProyectoFinal\WatcHive\WatcHive\App.xaml
+C:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\App.xaml
 8987156868
 
-351088151358
-35575654524
+371771884600
+35-2127156718
 View\DetalleWindow.xaml;View\ListasUserView.xaml;View\LoginWindow.xaml;View\MainWindow.xaml;View\PeliculasView.xaml;View\RegistroWindow.xaml;View\SeriesView.xaml;View\SeriesWindow.xaml;
 
-True
+False
 

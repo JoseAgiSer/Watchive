@@ -1,0 +1,88 @@
+﻿<Window x:Class="WatcHive.View.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WatcHive.View"
+        mc:Ignorable="d"
+        Title="LoginWindow" Height="550" Width="800"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        MouseDown="Window_MouseDown"
+        Background="Transparent"
+        AllowsTransparency="True"
+        >
+    <Border CornerRadius="50">
+
+        <Border CornerRadius="30" BorderThickness="5" Opacity="1" Background="{DynamicResource BackgroundGradient}">
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition Width="25"/>
+                        <ColumnDefinition Width="25"/>
+                        <ColumnDefinition Width="25"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Text="LOG IN"
+                           Foreground="White"
+                           FontSize="11"
+                           FontFamily="Montserrat"
+                           Grid.Column="0"
+                           VerticalAlignment="Center"
+                           Margin="30,0,0,0"/>
+
+                    <Button x:Name="btnMinimizar"
+                            Style="{StaticResource CloseButtonStyle}"
+                            Content="-"
+                            Click="btnMinimizar_Click"
+                            Grid.Column="1" />
+
+                    <Button x:Name="btnCerrar"
+                            Style="{StaticResource CloseButtonStyle}"
+                            Content="X"
+                            Click="btnCerrar_Click"
+                            Grid.Column="2" />
+
+                </Grid>
+
+                <Border Grid.Row="1" Style="{StaticResource LoginCardBorder}">
+
+                    <StackPanel Orientation="Vertical">
+
+                        <Image Source="/Resources/Images/logo.png" Width="242" Height="108" Margin="0,25,0,0"/>
+
+                        <TextBlock Text="Usuario" Style="{StaticResource FormLabelStyle}"/>
+
+                        <TextBox Name="userbox" Style="{StaticResource IconTextBoxStyle}" Width="300" />
+
+                        <TextBlock Text="Contraseña" Style="{StaticResource FormLabelStyle}"/>
+
+                        <PasswordBox Name="passbox" Style="{StaticResource IconPasswordBoxStyle}" Width="300" />
+
+                        <Button x:Name="btnLogin"
+                                Content="LOG IN"
+                                Style="{StaticResource LoginButtonStyle}"
+                                Click="btnLogin_Click"
+                                Margin="0,30,0,0">
+                        </Button>
+
+                        <Button Content="¿No tienes una cuenta? Regístrate"
+                                Style="{StaticResource LinkButtonStyle}"
+                                Click="RegisterText_MouseLeftButtonUp"
+                                Margin="0,20,0,0"/>
+
+                    </StackPanel>
+                    
+                </Border>
+            </Grid>
+        </Border>
+    </Border>
+</Window>

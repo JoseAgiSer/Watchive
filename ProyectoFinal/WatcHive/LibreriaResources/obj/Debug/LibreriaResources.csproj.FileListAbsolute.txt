@@ -1,0 +1,9 @@
+C:\DAM2\ProyectoFinal\WatcHive\LibreriaResources\bin\Debug\LibreriaResources.dll
+C:\DAM2\ProyectoFinal\WatcHive\LibreriaResources\bin\Debug\LibreriaResources.pdb
+C:\DAM2\ProyectoFinal\WatcHive\LibreriaResources\obj\Debug\LibreriaResources.csproj.AssemblyReference.cache
+C:\DAM2\ProyectoFinal\WatcHive\LibreriaResources\obj\Debug\LibreriaResources.g.resources
+C:\DAM2\ProyectoFinal\WatcHive\LibreriaResources\obj\Debug\LibreriaResources.Properties.Resources.resources
+C:\DAM2\ProyectoFinal\WatcHive\LibreriaResources\obj\Debug\LibreriaResources.csproj.GenerateResource.cache
+C:\DAM2\ProyectoFinal\WatcHive\LibreriaResources\obj\Debug\LibreriaResources.csproj.CoreCompileInputs.cache
+C:\DAM2\ProyectoFinal\WatcHive\LibreriaResources\obj\Debug\LibreriaResources.dll
+C:\DAM2\ProyectoFinal\WatcHive\LibreriaResources\obj\Debug\LibreriaResources.pdb

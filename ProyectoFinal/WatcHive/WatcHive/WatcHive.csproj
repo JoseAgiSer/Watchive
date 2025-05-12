@@ -130,6 +130,9 @@
     <Compile Include="View\PeliculasView.xaml.cs">
       <DependentUpon>PeliculasView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\RecomendacionesView.xaml.cs">
+      <DependentUpon>RecomendacionesView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\RegistroWindow.xaml.cs">
       <DependentUpon>RegistroWindow.xaml</DependentUpon>
     </Compile>
@@ -188,6 +191,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\PeliculasView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\RecomendacionesView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

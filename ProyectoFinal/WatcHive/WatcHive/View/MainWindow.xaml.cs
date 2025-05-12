@@ -99,5 +99,12 @@ namespace WatcHive
             UIElementCollection elementos = sidebar.Children;
             setBackgroundBtn(sender);
         }
+
+        private void btnMenuEmocion_Click(object sender, RoutedEventArgs e)
+        {
+            MainContent.Content = new RecomendacionesView(usuarioLoged);
+            UIElementCollection elementos = sidebar.Children;
+            setBackgroundBtn(sender);
+        }
     }
 }

@@ -126,5 +126,39 @@ namespace WatcHive.Persistence.Manages
 
             return new Dictionary<int, string>();
         }
+
+        public async Task<List<TMDBMovie>> GetMoviesByGenresAsync(List<int> genreIds)
+        {
+            string genres = string.Join(",", genreIds);
+            string url = $"{_baseUrl}/discover/movie?api_key={_apiKey}&language=es-ES&with_genres={genres}&sort_by=popularity.desc&page=1";
+
+            HttpResponseMessage response = await _httpClient.GetAsync(url);
+
+            if (response.IsSuccessStatusCode)
+            {
+                string jsonResponse = await response.Content.ReadAsStringAsync();
+                var tmdbResponse = JsonConvert.DeserializeObject<TMDBMovieResponse>(jsonResponse);
+                return tmdbResponse.results.Take(5).ToList();
+            }
+
+            return new List<TMDBMovie>();
+        }
+
+        public async Task<List<TVShowDTO>> GetSeriesByGenresAsync(List<int> genreIds)
+        {
+            string genres = string.Join(",", genreIds);
+            string url = $"{_baseUrl}/discover/tv?api_key={_apiKey}&language=es-ES&with_genres={genres}&sort_by=popularity.desc&page=1";
+
+            HttpResponseMessage response = await _httpClient.GetAsync(url);
+
+            if (response.IsSuccessStatusCode)
+            {
+                string jsonResponse = await response.Content.ReadAsStringAsync();
+                var tmdbResponse = JsonConvert.DeserializeObject<TMDBTVSearchResponse>(jsonResponse);
+                return tmdbResponse.results.Take(5).ToList();
+            }
+
+            return new List<TVShowDTO>();
+        }
     }
 }

@@ -134,3 +134,5 @@ C:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\obj\Debug\WatcHive.exe
 C:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\obj\Debug\WatcHive.pdb
 C:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\obj\Debug\View\AgregarVistoWindow.g.cs
 C:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\obj\Debug\View\AgregarVistoWindow.baml
+C:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\obj\Debug\View\RecomendacionesView.g.cs
+C:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\obj\Debug\View\RecomendacionesView.baml

@@ -30,7 +30,7 @@
                     <Button Name="btnMenuPeliculas" Content="Películas" Margin="10" Style="{StaticResource SidebarButtonStyle}" Click="btnMenuPeliculas_Click" />
                     <Button Name="btnMenuSeries" Content="Series" Margin="10" Style="{StaticResource SidebarButtonStyle}" Click="btnMenuSeries_Click"/>
                     <Button Name="btnMenuListas" Content="Mis listas" Margin="10" Style="{StaticResource SidebarButtonStyle}" Click="btnMenuListas_Click"/>
-                    <Button Name="btnMenuEmocion" Content="Recomendaciones" Margin="10" Style="{StaticResource SidebarButtonStyle}"/>
+                    <Button Name="btnMenuEmocion" Content="Recomendaciones" Margin="10" Style="{StaticResource SidebarButtonStyle}" Click="btnMenuEmocion_Click"/>
                     <Button Name="btnMenuConfiguracion" Content="Configuración" Margin="10,250,10,10" Style="{StaticResource SidebarButtonStyle}"/>
                 </StackPanel>
 
@@ -74,21 +74,13 @@
                             Margin="33,0,23,0" Grid.ColumnSpan="2"/>
 
                         <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.ColumnSpan="4" Margin="18,0,0,0">
-                            <TextBlock Text="Plataforma:" VerticalAlignment="Center" Foreground="White" Margin="0,0,10,0"
+                            <TextBlock Text="Plataforma:" VerticalAlignment="Center" Foreground="White" Margin="74,0,10,0"
                                        FontWeight="Bold" FontFamily="Montserrat"/>
                             <ComboBox x:Name="cmbPlataformas" Width="150" Height="25" Margin="0,0,15,0"/>
 
-                            <TextBlock Text="Género:" VerticalAlignment="Center" Foreground="White" Margin="0,0,10,0"
+                            <TextBlock Text="Género:" VerticalAlignment="Center" Foreground="White" Margin="84,0,10,0"
                                        FontWeight="Bold" FontFamily="Montserrat"/>
-                            <ComboBox x:Name="cmbGeneros" Height="25" Width="150"/>
-
-                            <TextBlock Text="Pelicula" VerticalAlignment="Center" Foreground="White" Margin="20,0,5,0"
-                                       FontWeight="Bold" FontFamily="Montserrat"/>
-                            <CheckBox VerticalAlignment="Center" Name="checkPelicula"/>
-
-                            <TextBlock Text="Serie" VerticalAlignment="Center" Foreground="White" Margin="15,0,5,0"
-                                       FontWeight="Bold" FontFamily="Montserrat"/>
-                            <CheckBox VerticalAlignment="Center" Name="checkSerie"/>
+                            <ComboBox x:Name="cmbGeneros" Height="24" Width="150"/>
 
                         </StackPanel>
                     </Grid>

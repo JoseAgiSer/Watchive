@@ -29,6 +29,17 @@ namespace WatcHive
             usuarioLoged = usuario;
             tagNombreUser.Text = usuarioLoged.username;
             MainContent.Content = new PeliculasView(usuarioLoged);
+            rellenarCboxFiltros();
+        }
+
+        private void rellenarCboxFiltros()
+        {
+            Genero g = new Genero();
+            g.readGenero();
+            foreach (Genero genero in g.getListGenero())
+            {
+                cmbGeneros.Items.Add(genero.nombreGenero);
+            }
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)

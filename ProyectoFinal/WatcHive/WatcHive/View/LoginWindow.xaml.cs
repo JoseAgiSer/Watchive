@@ -23,18 +23,20 @@ namespace WatcHive.View
         public LoginWindow()
         {
             InitializeComponent();
-            insertarGeneros();
+            rellenarBaseDatos();
         }
 
-        private void insertarGeneros()
+        private void rellenarBaseDatos()
         {
             Genero g = new Genero();
             Usuario u = new Usuario();
+            Emocion e = new Emocion();
             g.readGenero();
 
             if (g.getListGenero().Count == 0) {
                 g.insertGenerosInicio();
                 u.crearAdmin();
+                e.insertEmocionInicio();
             }
 
         }

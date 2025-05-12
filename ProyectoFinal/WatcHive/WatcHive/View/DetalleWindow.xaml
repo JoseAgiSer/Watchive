@@ -72,21 +72,24 @@
                             Width="120"
                             Margin="0,0,10,0"
                             Padding="10"
+                            Name="btnVerAhora"
                             Style="{StaticResource LoginButtonStyle}"
                             Background="#1D1854"
-                            Cursor="Hand" Click="Button_Click"/>
+                            Cursor="Hand"/>
 
                     <Button Content="Agregar a vistos"
                             Width="150"
+                            Name="btnAgreagarVistos"
                             Margin="0,0,10,0"
                             Style="{StaticResource LoginButtonStyle}"
-                            Cursor="Hand"/>
+                            Cursor="Hand" Click="btnAgreagarVistos_Click"/>
 
                     <Button Content="Agregar a pendientes"
                             Width="200"
                             Padding="10"
+                            Name="btnAgregarPendiente"
                             Style="{StaticResource LoginButtonStyle}"
-                            Cursor="Hand" Click="Button_Click"/>
+                            Cursor="Hand" Click="btnAgregarPendiente_Click"/>
 
                     
                 </StackPanel>

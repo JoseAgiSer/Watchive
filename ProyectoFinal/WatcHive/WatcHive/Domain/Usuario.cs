@@ -74,9 +74,14 @@ namespace WatcHive.Domain
             persistence.insertAdmin();
         }
 
-        internal bool contenidoEnListas(int id)
+        internal bool contenidoEnListaPendiente(int id)
         {
             return persistence.contenidoEnListas(this.username,id);
         }
+
+        internal bool contenidoYaVisto(int id)
+        {
+            return persistence.contenidoYaVisto(this.username, id);
+        }   
     }
 }

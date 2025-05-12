@@ -101,5 +101,23 @@ namespace WatcHive.Persistence.Manages
             }
             return existe;
         }
+
+        internal bool contenidoYaVisto(string username, int id)
+        {
+            bool existe = false;
+            List<Object> coincidencias = DBBroker.obtenerAgente().leer("select count(*) from ContenidoVisto where NombreUsuario= '" + username + "' AND idContenido = " + id);
+
+            int resultado = 0;
+
+            foreach (List<Object> aux in coincidencias)
+            {
+                resultado = Convert.ToInt32(aux[0]);
+            }
+            if (resultado > 0)
+            {
+                existe = true;
+            }
+            return existe;
+        }
     }
 }

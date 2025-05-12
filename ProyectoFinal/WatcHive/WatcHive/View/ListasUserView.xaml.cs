@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO.Ports;
 using System.Linq;
 using System.Security.Policy;
 using System.Text;
@@ -25,37 +26,59 @@ namespace WatcHive.View
         private Usuario usuarioLoged;
         List <Pelicula> peliculaList;
         List <Serie> serieList;
-        List <Contenido> contenidosList = new List<Contenido>();
+        List <Contenido> contenidoPendienteList = new List<Contenido>();
+        List<Contenido> contenidoVistoList = new List<Contenido>();
         public ListasUserView(Usuario usuario)
         {
             usuarioLoged = usuario;
             InitializeComponent();
-            rellenarPaneles();
+            rellenarListas();
         }
 
-        private void rellenarPaneles()
+        private void rellenarListas()
         {
             Pendientes p = new Pendientes();
             p.readPendientes(usuarioLoged.username);
+
+            ContenidoVisto cv = new ContenidoVisto();
+            cv.readContenidoVisto(usuarioLoged.username);
+
+            foreach (ContenidoVisto vistos in cv.getListContenidoVisto())
+            {
+
+                if (new Pelicula().isPelicula(vistos.idContenido))
+                {
+                    Pelicula pe = new Pelicula();
+                    contenidoVistoList.Add(pe.readById(vistos.idContenido));
+                }
+                else
+                {
+                    Serie se = new Serie();
+                    contenidoVistoList.Add(se.readById(vistos.idContenido));
+                }
+            }
 
             foreach (Pendientes pen in p.getListPendientes()) {
 
                 if (new Pelicula().isPelicula(pen.id))
                 {
-                    //Es una pelicula
                     Pelicula pe = new Pelicula();
-                    //peliculaList.Add(pe.readById(pen.id));
-                    contenidosList.Add(pe.readById(pen.id));
+                    contenidoPendienteList.Add(pe.readById(pen.id));
                 }
                 else {
-                    // no es una peli, por lo tanto una serie
                     Serie se = new Serie();
-                    //serieList.Add(se.readById(pen.id));
-                    contenidosList.Add(se.readById(pen.id));
+                    contenidoPendienteList.Add(se.readById(pen.id));
                 }
             }
 
-            foreach (Contenido contenido in contenidosList) {
+            rellenarPaneles(contenidoVistoList, panelVistos, false);
+            rellenarPaneles(contenidoPendienteList, panelPendientes, true);
+        }
+
+        private void rellenarPaneles(List<Contenido> contenidoList, WrapPanel panel, bool addBoton)
+        {
+            foreach (Contenido contenido in contenidoList)
+            {
                 var stack = new StackPanel
                 {
                     Width = 150,
@@ -97,7 +120,68 @@ namespace WatcHive.View
 
                 stack.Children.Add(image);
                 stack.Children.Add(title);
-                panelPendientes.Children.Add(stack);
+
+                if (addBoton)
+                {
+                    Button vistoButton = new Button
+                    {
+                        Content = "Ya la he visto",
+                        Width = 120,
+                        Height = 24,
+                        Margin = new Thickness(0, 8, 0, 0),
+                        Tag = contenido,
+                        Style = (Style)Application.Current.FindResource("LoginButtonStyle"),
+                        FontWeight = FontWeights.SemiBold,
+                        FontSize = 11
+                    };
+
+                    vistoButton.Click += VistoButton_Click;
+
+                    stack.Children.Add(vistoButton);
+                }
+
+                panel.Children.Add(stack);
+            }
+        }
+
+        private void VistoButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (sender is Button button && button.Tag is Contenido contenido)
+            {
+                Window parentWindow = Window.GetWindow(this);
+                var popup = new AgregarVistoWindow
+                {
+                    Owner = parentWindow
+                };
+                Pendientes pendiente = new Pendientes(usuarioLoged.username, contenido.id, true, DateTime.Now.Date, false);
+                pendiente.update();
+
+                if (popup.ShowDialog() == true)
+                {
+                    DateTime fechaSeleccionada = popup.FechaSeleccionada;
+                    string emocionSeleccionada = popup.EemocionSeleccionada;
+                    int puntuacionSeleccionada = popup.PuntuacionSeleccionada;
+
+                    ContenidoVisto contenidoVisto = new ContenidoVisto
+                    {
+                        idContenido = contenido.id,
+                        nombreUsuario = usuarioLoged.username,
+                        fechaVisto = fechaSeleccionada,
+                        idEmocion = new Emocion().getIdEmocion(emocionSeleccionada),
+                        puntuacion = puntuacionSeleccionada
+                    };
+
+                    contenidoVisto.insert();
+
+                    contenidoVistoList = new List<Contenido>();
+                    contenidoPendienteList = new List<Contenido>();
+
+                    panelPendientes.Children.Clear();
+                    panelVistos.Children.Clear();
+
+                    rellenarListas();
+                }
+
             }
         }
 

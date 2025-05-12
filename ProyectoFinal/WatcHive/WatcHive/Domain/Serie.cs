@@ -24,7 +24,7 @@ namespace WatcHive.Domain
             this.persistence = new SeriePersistence();
             this.persistenceContenido = new ContenidoPersistence();
             this._numTemporadas = numTemporadas;
-            this._listaGeneros = obtenerNombresGeneros(generos);
+            this._listaGeneros = generos;
         }
 
         private List<string> obtenerNombresGeneros(List<int> generos)

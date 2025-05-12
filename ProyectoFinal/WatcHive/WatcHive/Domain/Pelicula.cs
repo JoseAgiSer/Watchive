@@ -25,7 +25,7 @@ namespace WatcHive.Domain
             this.persistence = new PeliculaPersistence();
             this.persistenceContenido = new ContenidoPersistence();
             this._notaMedia = nota;
-            this.listaGeneros = obtenerNombresGeneros(generos);
+            this.listaGeneros = generos;
         }
 
 

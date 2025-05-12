@@ -14,18 +14,21 @@ namespace WatcHive.Domain
         public DateTime _fechaEstreno;
         public string _descripcion;
         public string _imagen;
-        public List<string> _listaGeneros;
+        public List<int> _listaGeneros;
         public ContenidoPersistence persistenceContenido;
+        public ContenidoGeneroPersistence persistenceContenidoGenero;
 
         public abstract string Tipo {  get; }
-        public Contenido() { persistenceContenido = new ContenidoPersistence(); }
+        public Contenido() { persistenceContenido = new ContenidoPersistence();
+            persistenceContenidoGenero = new ContenidoGeneroPersistence();
+        }
 
         public int id { get => _id; set => _id = value; }
         public string nombre { get => _nombre; set => _nombre = value; }
         public string imagen { get => _imagen; set => _imagen = value; }
         public string descripcion { get => _descripcion; set => _descripcion = value; }
         public DateTime fechaEstreno { get => _fechaEstreno; set => _fechaEstreno = value.Date; }
-        public List<string> listaGeneros { get => _listaGeneros; set => _listaGeneros = value; }
+        public List<int> listaGeneros { get => _listaGeneros; set => _listaGeneros = value; }
 
         internal bool exists()
         {

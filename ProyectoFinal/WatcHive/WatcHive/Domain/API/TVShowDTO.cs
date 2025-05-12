@@ -14,6 +14,6 @@ namespace WatcHive.Domain.API
         public string poster_path { get; set; }
         public string first_air_date { get; set; }
         public List<int> genre_ids { get; set; }
-        public int? number_of_seasons { get; set; } // Opcional, si usas el detalle
+        public int? number_of_seasons { get; set; }
     }
 }

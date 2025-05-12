@@ -114,8 +114,13 @@
     <Compile Include="Domain\API\TMDBMovie.cs" />
     <Compile Include="Domain\API\TMDBTVSearchResponse.cs" />
     <Compile Include="Domain\API\TVShowDTO.cs" />
+    <Compile Include="Domain\ContenidoGenero.cs" />
     <Compile Include="Domain\Emocion.cs" />
+    <Compile Include="Persistence\Manages\ContenidoGeneroPersistence.cs" />
     <Compile Include="Persistence\Manages\EmocionPersistence.cs" />
+    <Compile Include="View\AgregarVistoWindow.xaml.cs">
+      <DependentUpon>AgregarVistoWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\DetalleWindow.xaml.cs">
       <DependentUpon>DetalleWindow.xaml</DependentUpon>
     </Compile>
@@ -134,6 +139,10 @@
     <Compile Include="View\SeriesWindow.xaml.cs">
       <DependentUpon>SeriesWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\AgregarVistoWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\DetalleWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

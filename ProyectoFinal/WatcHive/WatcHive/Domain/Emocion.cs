@@ -44,5 +44,14 @@ namespace WatcHive.Domain
         {
             persistence.modifyEmocion(this);
         }
+        internal void insertEmocionInicio()
+        {
+            persistence.insertInicio();
+        }
+
+        internal int getIdEmocion(string emocion)
+        {
+            return persistence.getIdEmocion(emocion);
+        }
     }
 }

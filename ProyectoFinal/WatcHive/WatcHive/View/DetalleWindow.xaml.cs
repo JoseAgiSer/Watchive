@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Google.Protobuf.Collections;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Policy;
@@ -55,13 +56,18 @@ namespace WatcHive.View
 
             txtTitulo.Text = contenidoData.nombre;
             int cont = 0;
-            foreach (string genero in contenidoData.listaGeneros) {
+            string nombreGenero = "Genero no definido";
+            Genero g = new Genero();
+            foreach (int genero in contenidoData.listaGeneros) {
                 if (cont != 0)
                 {
-                    txtGeneros.Text = txtGeneros.Text + " - " + genero;
+                    nombreGenero = g.readGeneroById(genero);
+                    txtGeneros.Text = txtGeneros.Text + " - " + nombreGenero;
                 }
                 else {
-                    txtGeneros.Text = genero;
+                    nombreGenero = g.readGeneroById(genero);
+                    txtGeneros.Text ="Genero:  "+ nombreGenero;
+                    cont++;
                 }
             }
             txtDescripcion.Text = contenidoData.descripcion;
@@ -78,41 +84,60 @@ namespace WatcHive.View
             this.Close();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void btnAgregarPendiente_Click(object sender, RoutedEventArgs e)
         {
             bool yaExisteContenido = false;
             bool yaEnLista = false;
+            bool yaVisto = false;
+
             if (contenido is Serie serieData)
             {
                 yaExisteContenido = serieData.exists();
                 if (!yaExisteContenido)
+                {
                     serieData.insert();
+                    int id = serieData.id;
+                    List<int> generos = serieData.listaGeneros;
+                    ContenidoGenero cg = new ContenidoGenero(id, generos);
+                    cg.insert();
 
-                yaEnLista = usuarioLoged.contenidoEnListas(serieData.id);
+                }
+                yaEnLista = usuarioLoged.contenidoEnListaPendiente(serieData.id);
+                
 
                 if (yaEnLista)
                 {
-                    MessageBox.Show("Este contenido ya se encuentra en tu lista de vistos o pendientes.");
+                    MessageBox.Show("Este contenido ya se encuentra en tu lista de 'Pendientes'.");
+                } else if (usuarioLoged.contenidoYaVisto(serieData.id)) {
+                    MessageBox.Show("Este contenido ya se encuentra en tu lista de 'Vistos'.");
                 }
                 else
                 {
                     Pendientes pendiente = new Pendientes(usuarioLoged.username, serieData.id, false, DateTime.Now.Date, false);
                     pendiente.insert();
-                    MessageBox.Show("Has añadido '" + serieData.nombre + "' a tu lista de pendientes");
+                    MessageBox.Show("Has añadido '" + serieData.nombre + "' a tu lista de 'Pendientes'");
                 }
             }
             else if (contenido is Pelicula peliData)
             {
-                //IMPLEMENTAR LO DE ARRIBA AQUI TAMBIEN
-
                 yaExisteContenido = peliData.exists();
                 if (!yaExisteContenido)
-                    peliData.insert();
-
-                yaEnLista = usuarioLoged.contenidoEnListas(peliData.id);
-                if (yaEnLista)
                 {
-                    MessageBox.Show("Este contenido ya se encuentra en tu lista de vistos o pendientes.");
+                    peliData.insert();
+                    int id = peliData.id;
+                    List<int> generos = peliData.listaGeneros;
+                    ContenidoGenero cg = new ContenidoGenero(id, generos);
+                    cg.insert();
+                }
+
+                yaEnLista = usuarioLoged.contenidoEnListaPendiente(peliData.id);
+                if (yaEnLista && !usuarioLoged.contenidoYaVisto(peliData.id))
+                {
+                    MessageBox.Show("EEste contenido ya se encuentra en tu lista de 'Pendientes'");
+                }
+                else if (usuarioLoged.contenidoYaVisto(peliData.id))
+                {
+                    MessageBox.Show("Este contenido ya se encuentra en tu lista de 'Vistos'.");
                 }
                 else
                 {
@@ -123,6 +148,85 @@ namespace WatcHive.View
             }
 
             this.Close();
+        }
+
+        private void btnAgreagarVistos_Click(object sender, RoutedEventArgs e)
+        {
+            var popup = new AgregarVistoWindow
+            {
+                Owner = this
+            };
+
+            if (popup.ShowDialog() == true)
+            {
+                DateTime fecha = popup.FechaSeleccionada;
+                string emocion = popup.EemocionSeleccionada;
+                int puntuacion = popup.PuntuacionSeleccionada;
+
+                bool yaExisteContenido = false;
+                bool yaEnLista = false;
+                if (contenido is Serie serieData)
+                {
+                    yaExisteContenido = serieData.exists();
+                    if (!yaExisteContenido)
+                    {
+                        serieData.insert();
+                        int id = serieData.id;
+                        List<int> generos = serieData.listaGeneros;
+                        ContenidoGenero cg = new ContenidoGenero(id, generos);
+                        cg.insert();
+
+                    }
+                    yaEnLista = usuarioLoged.contenidoYaVisto(serieData.id);
+
+                    if (yaEnLista)
+                    {
+                        MessageBox.Show("Este contenido ya se encuentra en tu lista de 'Vistos'.");
+                    }
+                    else
+                    {
+                        if (usuarioLoged.contenidoEnListaPendiente(serieData.id)) { 
+                            Pendientes pendiente = new Pendientes(usuarioLoged.username, serieData.id, true, DateTime.Now.Date, false);
+                            pendiente.update();
+                        }
+                        int idEmocion = new Emocion().getIdEmocion(emocion);
+                        ContenidoVisto visto = new ContenidoVisto(usuarioLoged.username, serieData.id,idEmocion , DateTime.Now.Date, puntuacion);
+                        visto.insert();
+                        MessageBox.Show("Has añadido " + contenido.nombre + " \ncomo visto el " + fecha.ToShortDateString() + "\nsintiéndote " + emocion.ToLower() + ", \ncon una puntuación de " + puntuacion + "/5");
+                    }
+                }
+                else if (contenido is Pelicula peliData)
+                {
+                    yaExisteContenido = peliData.exists();
+                    if (!yaExisteContenido)
+                    {
+                        peliData.insert();
+                        int id = peliData.id;
+                        List<int> generos = peliData.listaGeneros;
+                        ContenidoGenero cg = new ContenidoGenero(id, generos);
+                        cg.insert();
+                    }
+
+                    yaEnLista = usuarioLoged.contenidoYaVisto(peliData.id);
+                    if (yaEnLista)
+                    {
+                        MessageBox.Show("Este contenido ya se encuentra en tu lista de 'Vistos'");
+                    }
+                    else
+                    {
+                        if (usuarioLoged.contenidoEnListaPendiente(peliData.id))
+                        {
+                            Pendientes pendiente = new Pendientes(usuarioLoged.username, peliData.id, true, DateTime.Now.Date, false);
+                            pendiente.update();
+                        }
+                        int idEmocion = new Emocion().getIdEmocion(emocion);
+                        ContenidoVisto visto = new ContenidoVisto(usuarioLoged.username, peliData.id, idEmocion, DateTime.Now.Date, puntuacion);
+                        visto.insert();
+                        MessageBox.Show("Has añadido " + contenido.nombre + " \ncomo visto el " + fecha.ToShortDateString() + "\nsintiéndote " + emocion.ToLower() + ", \ncon una puntuación de " + puntuacion + "/5");
+                    }
+                }
+                this.Close();
+            }
         }
     }
 }

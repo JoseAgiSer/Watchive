@@ -26,14 +26,17 @@ namespace WatcHive.Persistence.Manages
                 ""+g.fechaAdicion.ToString("yyyy-MM-dd")+"',"+g.eliminado+")");
         }
 
-        internal void modifyPendientes(Pendientes genero)
+        internal void modifyPendientes(Pendientes g)
         {
-            throw new NotImplementedException();
+            DBBroker broker = DBBroker.obtenerAgente();
+            broker.modifier("Update ListaPendientes set Visto = " +g.visto + " where NombreUsuario = '" + g.nombreUsuario + 
+                "' AND idContenido = "+g.id);
         }
 
         internal void readPendientes(string username)
         {
-            List<object> lpendientes = DBBroker.obtenerAgente().leer("select * from ListaPendientes where NombreUsuario = '"+username+"'");
+            List<object> lpendientes = DBBroker.obtenerAgente().leer("select * from ListaPendientes where NombreUsuario = '"+username+"'" +
+                " AND Visto = "+false);
 
             foreach (List<object> fila in lpendientes)
             {

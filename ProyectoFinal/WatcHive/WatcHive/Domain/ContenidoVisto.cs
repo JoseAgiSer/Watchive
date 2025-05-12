@@ -35,12 +35,12 @@ namespace WatcHive.Domain
         public int puntuacion { get => _puntuacion; set => _puntuacion = value; }
 
 
-        public void readContenidoVisto()
+        public void readContenidoVisto(string username)
         {
-            persistence.readContenidoVisto();
+            persistence.readContenidoVisto(username);
         }
 
-        public List<ContenidoVisto> getListPeliculas()
+        public List<ContenidoVisto> getListContenidoVisto()
         {
             return persistence.contenidoVistoList;
         }

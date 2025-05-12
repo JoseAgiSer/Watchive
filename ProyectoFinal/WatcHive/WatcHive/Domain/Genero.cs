@@ -30,6 +30,11 @@ namespace WatcHive.Domain
             persistence.readGeneros();
         }
 
+        public string readGeneroById(int id)
+        {
+            return persistence.readGeneroById(id);
+        }
+
         public List<Genero> getListGenero()
         {
             return persistence.generoList;

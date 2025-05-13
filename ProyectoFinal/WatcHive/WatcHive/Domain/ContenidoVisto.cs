@@ -59,5 +59,17 @@ namespace WatcHive.Domain
         {
             persistence.modifyContenidoVisto(this);
         }
+
+        internal List<int> getRecomendacionUsuario(string useranme, string emocion, bool pelicula)
+        {
+            if (!pelicula)
+            {
+                return persistence.recomendacionUsuario(useranme, emocion, "serie");
+            }
+            else
+            {
+                return persistence.recomendacionUsuario(useranme, emocion, "pelicula");
+            }
+        }
     }
 }

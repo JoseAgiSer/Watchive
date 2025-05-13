@@ -138,7 +138,7 @@ namespace WatcHive.Persistence.Manages
             {
                 string jsonResponse = await response.Content.ReadAsStringAsync();
                 var tmdbResponse = JsonConvert.DeserializeObject<TMDBMovieResponse>(jsonResponse);
-                return tmdbResponse.results.Take(5).ToList();
+                return tmdbResponse.results.Take(8).ToList();
             }
 
             return new List<TMDBMovie>();
@@ -155,7 +155,7 @@ namespace WatcHive.Persistence.Manages
             {
                 string jsonResponse = await response.Content.ReadAsStringAsync();
                 var tmdbResponse = JsonConvert.DeserializeObject<TMDBTVSearchResponse>(jsonResponse);
-                return tmdbResponse.results.Take(5).ToList();
+                return tmdbResponse.results.Take(8).ToList();
             }
 
             return new List<TVShowDTO>();

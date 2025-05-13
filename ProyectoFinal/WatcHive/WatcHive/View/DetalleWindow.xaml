@@ -57,6 +57,12 @@
                                Foreground="Gray"
                                TextWrapping="Wrap"
                                Margin="0,0,0,10"/>
+                    
+                    <TextBlock x:Name="txtNotaOrTemporadas"
+                               FontSize="14"
+                               Foreground="Gray"
+                               TextWrapping="Wrap"
+                               Margin="0,0,0,10"/>
 
                     <ScrollViewer VerticalScrollBarVisibility="Auto" Height="220">
                         <TextBlock x:Name="txtDescripcion"
@@ -67,22 +73,14 @@
                 </StackPanel>
 
                 <!-- Botones abajo -->
-                <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Left" Margin="0,20,0,0">
-                    <Button Content="Voy a verla"
-                            Width="120"
-                            Margin="0,0,10,0"
-                            Padding="10"
-                            Name="btnVerAhora"
-                            Style="{StaticResource LoginButtonStyle}"
-                            Background="#1D1854"
-                            Cursor="Hand"/>
-
+                <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,20,0,0">
                     <Button Content="Agregar a vistos"
                             Width="150"
                             Name="btnAgreagarVistos"
                             Margin="0,0,10,0"
                             Style="{StaticResource LoginButtonStyle}"
-                            Cursor="Hand" Click="btnAgreagarVistos_Click"/>
+                            Cursor="Hand" Click="btnAgreagarVistos_Click"
+                            Background="#1D1854"/>
 
                     <Button Content="Agregar a pendientes"
                             Width="200"

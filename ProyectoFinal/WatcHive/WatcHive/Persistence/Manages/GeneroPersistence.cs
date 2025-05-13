@@ -47,33 +47,34 @@ namespace WatcHive.Persistence.Manages
         {
             DBBroker broker = DBBroker.obtenerAgente();
             string query = "INSERT INTO Genero VALUES" +
-                   "(28, 'Acción')," +
-                   "(12, 'Aventura')," +
-                   "(16, 'Animación')," +
-                   "(35, 'Comedia')," +
-                   "(80, 'Crimen')," +
-                   "(99, 'Documental')," +
-                   "(18, 'Drama')," +
-                   "(10751, 'Familia')," +
-                   "(14, 'Fantasía')," +
-                   "(36, 'Historia')," +
-                   "(27, 'Terror')," +
-                   "(10402, 'Música')," +
-                   "(9648, 'Misterio')," +
-                   "(10749, 'Romance')," +
-                   "(878, 'Ciencia Ficción')," +
-                   "(10770, 'Película de TV')," +
-                   "(53, 'Suspense')," +
-                   "(10752, 'Guerra')," +
-                   "(10759, 'Acción y Aventura')," +
-                   "(10762, 'Niños')," +
-                   "(10763, 'Noticias')," +
-                   "(10764, 'Reality')," +
-                   "(10765, 'Ciencia Ficción y Fantasía')," +
-                   "(10766, 'Telenovela')," +
-                   "(10767, 'Debate')," +
-                   "(10768, 'Guerra y Política')," +
-                   "(37, 'Western');";
+                    "(28, 'Acción', 'pelicula'),"+
+                    "(12, 'Aventura', 'pelicula'),"+
+                    "(16, 'Animación', 'both'),"+
+                    "(35, 'Comedia', 'both'),"+
+                    "(80, 'Crimen', 'both'),"+
+                    "(99, 'Documental', 'both'),"+
+                    "(18, 'Drama', 'both'),"+
+                    "(10751, 'Familia', 'both'),"+
+                    "(14, 'Fantasía', 'pelicula'),"+
+                    "(36, 'Historia', 'pelicula'),"+
+                    "(27, 'Terror', 'pelicula'),"+
+                    "(10402, 'Música', 'pelicula'),"+
+                    "(9648, 'Misterio', 'both'),"+
+                    "(10749, 'Romance', 'pelicula'),"+
+                    "(878, 'Ciencia Ficción', 'pelicula'),"+
+                    "(10770, 'Película de TV', 'pelicula'),"+
+                    "(53, 'Suspense', 'pelicula'),"+
+                    "(10752, 'Guerra', 'pelicula'),"+
+                    "(10759, 'Acción y Aventura', 'serie'),"+
+                    "(10762, 'Niños', 'serie'),"+
+                    "(10763, 'Noticias', 'serie'),"+
+                    "(10764, 'Reality', 'serie'),"+
+                    "(10765, 'Ciencia Ficción y Fantasía', 'serie'),"+
+                    "(10766, 'Telenovela', 'serie'),"+
+                    "(10767, 'Debate', 'serie'),"+
+                    "(10768, 'Guerra y Política', 'serie'),"+
+                    "(37, 'Western', 'both')";
+
             broker.modifier(query);
         }
 

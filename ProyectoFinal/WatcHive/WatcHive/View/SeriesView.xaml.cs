@@ -69,7 +69,9 @@ namespace WatcHive.View
                     bitmap.EndInit();
                     image.Source = bitmap;
                 }
-                catch { }
+                catch {
+                //CONTROL DE ERROR
+                }
 
                 image.MouseDown += ImageOrTitle_Click;
 

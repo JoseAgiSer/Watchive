@@ -22,9 +22,22 @@ namespace WatcHive.View
     /// </summary>
     public partial class RecomendacionesView : UserControl
     {
+
+        public Dictionary<string, List<int>> emocionGeneros = new Dictionary<string, List<int>>
+            {
+                { "Feliz", new List<int> { 35, 10751 } },         // Comedia, Familia
+                { "Triste", new List<int> { 18, 10749 } },        // Drama, Romance
+                { "Enfadado", new List<int> { 28, 53 } },         // Accion, Thriller
+                { "Ansioso", new List<int> { 9648, 27 } },        // Misterio, Terror
+                { "Aburrido", new List<int> { 12, 14 } },         // Aventura, Fantasa
+                { "Relajado", new List<int> { 16, 10402 } },      // Animacion, Musica
+                { "Motivado", new List<int> { 99, 80 } },         // Documental, Crimen
+            };
+        private Usuario usuarioLoged;
         public RecomendacionesView(Usuario usuarioLoged)
         {
             InitializeComponent();
+            this.usuarioLoged = usuarioLoged;
         }
 
         private async void BtnRecomendar_Click(object sender, RoutedEventArgs e)
@@ -35,69 +48,129 @@ namespace WatcHive.View
                 MessageBox.Show("Por favor, selecciona una emoción.");
                 return;
             }
-            bool incluirPeliculas = checkPeliculas.IsChecked == true;
-            bool incluirSeries = checkSeries.IsChecked == true;
+
+            bool incluirPeliculas = radioPeliculas.IsChecked == true;
+            bool incluirSeries = radioSeries.IsChecked == true;
 
             wrapRecomendaciones.Children.Clear();
-
-            Dictionary<string, List<int>> emocionGeneros = new Dictionary<string, List<int>>
-            {
-                { "Feliz", new List<int> { 35, 10751 } },         // Comedia, Familia
-                { "Triste", new List<int> { 18, 10749 } },        // Drama, Romance
-                { "Enfadado", new List<int> { 28, 53 } },         // Accion, Thriller
-                { "Ansioso", new List<int> { 9648, 27 } },        // Misterio, Terror
-                { "Aburrido", new List<int> { 12, 14 } },         // Aventura, Fantasa
-                { "Relajado", new List<int> { 16, 10402 } },      // Animacion, Musica
-                { "Motivado", new List<int> { 99, 80 } },         // Documental, Crimen
-            };
 
             if (!emocionGeneros.ContainsKey(emocion))
             {
                 MessageBox.Show("Por favor, selecciona una emoción válida.");
                 return;
             }
+            if (emocion.Equals("No lo se"))
+            {
+                emocion = "Indefinida";
+            }
 
             APIManager api = new APIManager();
-            List<int> generos = emocionGeneros[emocion];
+
+            List<int> generos = recomendacionPersonalizada(emocion, incluirPeliculas);
 
             if (incluirPeliculas)
             {
-                var peliculas = await api.GetMoviesByGenresAsync(generos);
-                foreach (var peli in peliculas)
+                
+                if (generos.Count != 0 || emocion.Equals("Indefinida"))
                 {
-                    Pelicula pelicula = new Pelicula
+                    //Personalizada
+                    var peliculas = await api.GetMoviesByGenresAsync(generos);
+                    foreach (var peli in peliculas)
                     {
-                        id = peli.id,
-                        nombre = peli.title,
-                        imagen = $"https://image.tmdb.org/t/p/w500{peli.poster_path}",
-                        fechaEstreno = DateTime.Parse(peli.releaseDate),
-                        descripcion = peli.Overview,
-                        nota = peli.VoteAverage,
-                        listaGeneros = peli.generoId
-                    };
+                        Pelicula pelicula = new Pelicula
+                        {
+                            id = peli.id,
+                            nombre = peli.title,
+                            imagen = $"https://image.tmdb.org/t/p/w500{peli.poster_path}",
+                            fechaEstreno = DateTime.Parse(peli.releaseDate),
+                            descripcion = peli.Overview,
+                            nota = peli.VoteAverage,
+                            listaGeneros = peli.generoId
+                        };
 
-                    wrapRecomendaciones.Children.Add(CrearElementoVisual(pelicula));
+                        wrapRecomendaciones.Children.Add(CrearElementoVisual(pelicula));
+                    }
+                }
+                else
+                {
+                    //Defaulr
+                    var peliculas = await api.GetMoviesByGenresAsync(emocionGeneros[emocion]);
+                    foreach (var peli in peliculas)
+                    {
+                        Pelicula pelicula = new Pelicula
+                        {
+                            id = peli.id,
+                            nombre = peli.title,
+                            imagen = $"https://image.tmdb.org/t/p/w500{peli.poster_path}",
+                            fechaEstreno = DateTime.Parse(peli.releaseDate),
+                            descripcion = peli.Overview,
+                            nota = peli.VoteAverage,
+                            listaGeneros = peli.generoId
+                        };
+
+                        wrapRecomendaciones.Children.Add(CrearElementoVisual(pelicula));
+                    }
                 }
             }
 
             if (incluirSeries)
             {
-                var series = await api.GetSeriesByGenresAsync(generos);
-                foreach (var serie in series)
+                if(generos.Count != 0 || emocion.Equals("Indefinida"))
                 {
-                    Serie serieaux = new Serie
+                    var series = await api.GetSeriesByGenresAsync(generos);
+                    foreach (var serie in series)
                     {
-                        id = serie.id,
-                        nombre = serie.name,
-                        imagen = $"https://image.tmdb.org/t/p/w500{serie.poster_path}",
-                        fechaEstreno = DateTime.Parse(serie.first_air_date),
-                        descripcion = serie.overview,
-                        numTemporadas = serie.number_of_seasons.HasValue ? serie.number_of_seasons.Value : 1,
-                        listaGeneros = serie.genre_ids
-                    };
-                    wrapRecomendaciones.Children.Add(CrearElementoVisual(serieaux));
+                        Serie serieaux = new Serie
+                        {
+                            id = serie.id,
+                            nombre = serie.name,
+                            imagen = $"https://image.tmdb.org/t/p/w500{serie.poster_path}",
+                            fechaEstreno = DateTime.Parse(serie.first_air_date),
+                            descripcion = serie.overview,
+                            numTemporadas = serie.number_of_seasons.HasValue ? serie.number_of_seasons.Value : 1,
+                            listaGeneros = serie.genre_ids
+                        };
+                        wrapRecomendaciones.Children.Add(CrearElementoVisual(serieaux));
+                    }
                 }
+                else
+                {
+                    var series = await api.GetSeriesByGenresAsync(emocionGeneros[emocion]);
+                    foreach (var serie in series)
+                    {
+                        Serie serieaux = new Serie
+                        {
+                            id = serie.id,
+                            nombre = serie.name,
+                            imagen = $"https://image.tmdb.org/t/p/w500{serie.poster_path}",
+                            fechaEstreno = DateTime.Parse(serie.first_air_date),
+                            descripcion = serie.overview,
+                            numTemporadas = serie.number_of_seasons.HasValue ? serie.number_of_seasons.Value : 1,
+                            listaGeneros = serie.genre_ids
+                        };
+                        wrapRecomendaciones.Children.Add(CrearElementoVisual(serieaux));
+                    }
+                }
+                
             }
+        }
+
+        private List<int> recomendacionPersonalizada(string emocion, bool pelicula)
+        {
+            List<int> gustosGneros = new List<int>();
+            if (pelicula)
+            {
+                Emocion emo = new Emocion();
+                emo.getIdEmocion(emocion);
+
+                ContenidoVisto c = new ContenidoVisto();
+                gustosGneros = c.getRecomendacionUsuario(usuarioLoged.username, emocion,true);
+            }
+            else {
+                ContenidoVisto c = new ContenidoVisto();
+                gustosGneros = c.getRecomendacionUsuario(usuarioLoged.username, emocion,false);
+            }
+            return gustosGneros;
         }
 
         private UIElement CrearElementoVisual(Contenido contenido)
@@ -131,6 +204,8 @@ namespace WatcHive.View
             
             }
 
+            image.MouseDown += ImageOrTitle_Click;
+
             var title = new TextBlock
             {
                 Text = contenido.nombre,
@@ -142,9 +217,20 @@ namespace WatcHive.View
                 Tag = contenido
             };
 
+            title.MouseDown += ImageOrTitle_Click;
+
             stack.Children.Add(image);
             stack.Children.Add(title);
             return stack;
+        }
+        private void ImageOrTitle_Click(object sender, MouseButtonEventArgs e)
+        {
+            var element = sender as FrameworkElement;
+            if (element?.Tag is Serie serieData)
+            {
+                var detalleWindow = new DetalleWindow(serieData, usuarioLoged);
+                detalleWindow.ShowDialog();
+            }
         }
     }
 }

@@ -70,6 +70,13 @@ namespace WatcHive.View
                     cont++;
                 }
             }
+            if (contenidoData is Serie serie)
+            {
+                txtNotaOrTemporadas.Text = "Número de temporadas: " + serie.numTemporadas.ToString();
+            }
+            else if (contenidoData is Pelicula pelicula){ 
+                txtNotaOrTemporadas.Text = "Nota media: " + pelicula.nota.ToString();
+            }
             txtDescripcion.Text = contenidoData.descripcion;
         }
 
@@ -190,7 +197,7 @@ namespace WatcHive.View
                             pendiente.update();
                         }
                         int idEmocion = new Emocion().getIdEmocion(emocion);
-                        ContenidoVisto visto = new ContenidoVisto(usuarioLoged.username, serieData.id,idEmocion , DateTime.Now.Date, puntuacion);
+                        ContenidoVisto visto = new ContenidoVisto(usuarioLoged.username, serieData.id, idEmocion , DateTime.Now.Date, puntuacion);
                         visto.insert();
                         MessageBox.Show("Has añadido " + contenido.nombre + " \ncomo visto el " + fecha.ToShortDateString() + "\nsintiéndote " + emocion.ToLower() + ", \ncon una puntuación de " + puntuacion + "/5");
                     }

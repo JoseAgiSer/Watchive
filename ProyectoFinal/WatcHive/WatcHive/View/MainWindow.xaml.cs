@@ -24,6 +24,7 @@ namespace WatcHive
     public partial class MainWindow : Window
     {
         private Usuario usuarioLoged;
+        private string vistaActual = "peliculas";
         public MainWindow(Usuario usuario)
         {
             InitializeComponent();
@@ -61,6 +62,7 @@ namespace WatcHive
 
         private void btnMenuPeliculas_Click(object sender, RoutedEventArgs e)
         {
+            vistaActual = "peliculas";
             MainContent.Content = new PeliculasView(usuarioLoged);
             UIElementCollection elementos = sidebar.Children;
             setBackgroundBtn(sender);
@@ -68,6 +70,7 @@ namespace WatcHive
 
         private void btnMenuSeries_Click(object sender, RoutedEventArgs e)
         {
+            vistaActual = "series";
             MainContent.Content = new SeriesView(usuarioLoged);
             UIElementCollection elementos = sidebar.Children;
             setBackgroundBtn(sender);
@@ -113,5 +116,78 @@ namespace WatcHive
             var configWindow = new ConfiguracionWindow(usuarioLoged);
             configWindow.ShowDialog();
         }
+
+        private void btnLimpiar_Click(object sender, RoutedEventArgs e)
+        {
+            cmbGeneros.SelectedIndex = -1;
+            cmbPlataformas.SelectedIndex = -1;
+            txtBusqueda.Text = "Titulo...";
+            if (vistaActual.Equals("peliculas"))
+            {
+                var vistaPeliculas = new PeliculasView(usuarioLoged);
+                MainContent.Content = vistaPeliculas;
+            }
+            else if (vistaActual.Equals("series"))
+            {
+                var vistaSeries = new SeriesView(usuarioLoged);
+                MainContent.Content = vistaSeries;
+            }
+        }
+
+        private void btnSearch_Click(object sender, RoutedEventArgs e)
+        {
+            if (!txtBusqueda.Text.Equals("Titulo..."))
+            {
+                string titulo = txtBusqueda.Text.Trim();
+                if (string.IsNullOrWhiteSpace(titulo)) return;
+
+                if (vistaActual.Equals("peliculas"))
+                {
+                    var vistaPeliculas = new PeliculasView(usuarioLoged, titulo);
+                    MainContent.Content = vistaPeliculas;
+                }
+                else if (vistaActual.Equals("series"))
+                {
+                    var vistaSeries = new SeriesView(usuarioLoged, titulo);
+                    MainContent.Content = vistaSeries;
+                }
+            }
+        }
+        private void Limpiarfiltros(object sender, RoutedEventArgs e)
+        {
+            if (sender == txtBusqueda)
+    {
+        // Limpia ambos ComboBox
+        cmbPlataformas.SelectedIndex = -1;
+        cmbGeneros.SelectedIndex = -1;
+
+        // Opcional: limpia placeholder
+        if (txtBusqueda.Text == "Titulo...")
+        {
+            txtBusqueda.Clear();
+        }
+    }
+    else if (sender == cmbPlataformas)
+    {
+        // Limpia el TextBox y el otro ComboBox
+        if (!string.IsNullOrWhiteSpace(txtBusqueda.Text))
+        {
+            txtBusqueda.Clear();
+        }
+
+        cmbGeneros.SelectedIndex = -1;
+    }
+    else if (sender == cmbGeneros)
+    {
+        // Limpia el TextBox y el otro ComboBox
+        if (!string.IsNullOrWhiteSpace(txtBusqueda.Text))
+        {
+            txtBusqueda.Clear();
+        }
+
+        cmbPlataformas.SelectedIndex = -1;
+    }
+        }
+
     }
 }

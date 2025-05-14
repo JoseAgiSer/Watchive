@@ -47,13 +47,13 @@
                             <RowDefinition Height="40"/>
                         </Grid.RowDefinitions>
 
-                        <TextBox Width="auto" Margin="18,10,204,0" VerticalAlignment="Top"
+                        <TextBox x:Name="txtBusqueda" Width="auto" Margin="18,10,204,0" VerticalAlignment="Top"
                              Text="Titulo..."  Style="{StaticResource IconTextBoxStyle}"
-                             Grid.Column="0" Grid.Row="0" Height="28"/>
+                             Grid.Column="0" Grid.Row="0" Height="28" GotFocus="Limpiarfiltros"/>
 
-                        <Button Name="btnSearch" Content="Buscar" Height="40" VerticalAlignment="Top" Width="80" 
-                            Margin="686,20,70,0" Style="{StaticResource LoginButtonStyle}" 
-                            Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"/>
+                        <Button Name="btnSearch" Content="Buscar" Height="29" VerticalAlignment="Top" Width="80" 
+                            Margin="664,11,92,0" Style="{StaticResource LoginButtonStyle}" 
+                            Grid.Column="0" Grid.Row="0" Click="btnSearch_Click"/>
 
                         <TextBlock Name="tagNombreUser" Text="User" FontWeight="Bold" HorizontalAlignment="Left"
                            VerticalAlignment="Top" Margin="766,11,0,0"
@@ -74,13 +74,14 @@
                             Margin="33,0,23,0" Grid.ColumnSpan="2"/>
 
                         <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.ColumnSpan="4" Margin="18,0,0,0">
-                            <TextBlock Text="Plataforma:" VerticalAlignment="Center" Foreground="White" Margin="74,0,10,0"
+                            <Button x:Name="btnLimpiar" Content="Quitar filtros" Height="28" Width="128" Style="{StaticResource LoginButtonStyle}" Click="btnLimpiar_Click"/>
+                            <TextBlock Text="Plataforma:" VerticalAlignment="Center" Foreground="White" Margin="25,0,10,0"
                                        FontWeight="Bold" FontFamily="Montserrat"/>
-                            <ComboBox x:Name="cmbPlataformas" Width="150" Height="25" Margin="0,0,15,0"/>
+                            <ComboBox x:Name="cmbPlataformas" Width="150" Height="25" Margin="0,0,15,0" GotFocus="Limpiarfiltros"/>
 
-                            <TextBlock Text="Género:" VerticalAlignment="Center" Foreground="White" Margin="84,0,10,0"
+                            <TextBlock Text="Género:" VerticalAlignment="Center" Foreground="White" Margin="4,0,10,0"
                                        FontWeight="Bold" FontFamily="Montserrat"/>
-                            <ComboBox x:Name="cmbGeneros" Height="24" Width="150"/>
+                            <ComboBox x:Name="cmbGeneros" Height="24" Width="150" GotFocus="Limpiarfiltros"/>
 
                         </StackPanel>
                     </Grid>
@@ -90,7 +91,7 @@
                     Grid.Column="1"
                     Grid.Row="1"
                     Margin="20,20,20,20"/>
-                
+
             </Grid>
         </Border>
     </Border>

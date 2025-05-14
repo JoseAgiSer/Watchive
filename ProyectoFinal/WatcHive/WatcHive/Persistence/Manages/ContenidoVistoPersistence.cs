@@ -59,7 +59,7 @@ namespace WatcHive.Persistence.Manages
                 "JOIN Emocion e ON cv.Emocion_idEmocion = e.idEmocion " +
                 "JOIN ContenidoGenero cg ON cv.idContenido = cg.idContenido " +
                 "JOIN Genero g ON cg.idGenero = g.idGenero WHERE cv.NombreUsuario = '"+useranme+"' AND e.NombreEmocion = '" + emocion + "'" +
-                "AND g.Tipo = '" + tipo + "' OR g.Tipo ='both'" +
+                "AND (g.Tipo = '" + tipo + "' OR g.Tipo ='both')" +
                 " GROUP BY g.idGenero " +
                 "ORDER BY relevancia DESC " +
                 "LIMIT 3";

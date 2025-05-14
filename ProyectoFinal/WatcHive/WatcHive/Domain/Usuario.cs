@@ -60,6 +60,11 @@ namespace WatcHive.Domain
             persistence.deleteUsuario(this);
         }
 
+        public void updatePass()
+        {
+            persistence.modifyUsuarioPass(this);
+        }
+
         public void update()
         {
             persistence.modifyUsuario(this);

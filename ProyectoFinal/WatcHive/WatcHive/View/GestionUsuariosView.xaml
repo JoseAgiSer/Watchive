@@ -65,10 +65,10 @@
                     <TextBox Name="emailbox" Style="{StaticResource IconTextBoxStyle}" Width="300" />
 
                     <TextBlock Text="Nombre de usuario" Style="{StaticResource FormLabelStyle}" />
-                    <TextBox Name="usernamebox" Style="{StaticResource IconTextBoxStyle}" Width="300" />
+                    <TextBox Name="usernamebox" Style="{StaticResource IconTextBoxStyle}" Width="300"/>
 
                     <TextBlock Text="Contraseña" Style="{StaticResource FormLabelStyle}" />
-                    <PasswordBox Name="passbox" Style="{StaticResource IconPasswordBoxStyle}" Width="300" />
+                    <TextBox Name="passbox" Style="{StaticResource IconTextBoxStyle}" Width="300" />
                 </StackPanel>
             </ScrollViewer>
         </Grid>
@@ -78,7 +78,7 @@
                     HorizontalAlignment="Center"
                     VerticalAlignment="Bottom"
                     Margin="0,0,0,10">
-            <Button Name="btnAnadir" Content="Añadir" Margin="10,0" Width="100"
+            <Button Name="btnAnadir" Content="   Añadir   " Margin="10,0" Width="auto" 
                     Style="{StaticResource LoginButtonStyle}" Click="btnAnadir_Click"/>
             <Button Name="btnEliminar" Content="Eliminar" Margin="10,0" Width="100"
                     Style="{StaticResource LoginButtonStyle}" Click="btnEliminar_Click"/>

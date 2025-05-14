@@ -59,16 +59,18 @@ namespace WatcHive.View
             int cont = 0;
             string nombreGenero = "Genero no definido";
             Genero g = new Genero();
-            foreach (int genero in contenidoData.listaGeneros) {
-                if (cont != 0)
-                {
-                    nombreGenero = g.readGeneroById(genero);
-                    txtGeneros.Text = txtGeneros.Text + " - " + nombreGenero;
-                }
-                else {
-                    nombreGenero = g.readGeneroById(genero);
-                    txtGeneros.Text ="Genero:  "+ nombreGenero;
-                    cont++;
+            if (contenidoData.listaGeneros != null) { 
+                foreach (int genero in contenidoData.listaGeneros) {
+                    if (cont != 0)
+                    {
+                        nombreGenero = g.readGeneroById(genero);
+                        txtGeneros.Text = txtGeneros.Text + " - " + nombreGenero;
+                    }
+                    else {
+                        nombreGenero = g.readGeneroById(genero);
+                        txtGeneros.Text = "Genero:  " + nombreGenero;
+                        cont++;
+                    }
                 }
             }
             if (contenidoData is Serie serie)

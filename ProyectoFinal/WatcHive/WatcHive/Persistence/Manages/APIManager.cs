@@ -55,14 +55,16 @@ namespace WatcHive.Persistence.Manages
             return new List<TVShowDTO>();
         }
 
-        public async Task<string> SearchMoviesByTitleAsync(string title)
+        public async Task<List<TMDBMovie>> SearchMoviesByTitleAsync(string title)
         {
             string url = $"{_baseUrl}/search/movie?api_key={_apiKey}&language=es-ES&query={Uri.EscapeDataString(title)}";
 
             HttpResponseMessage response = await _httpClient.GetAsync(url);
             if (response.IsSuccessStatusCode)
             {
-                return await response.Content.ReadAsStringAsync();
+                string jsonResponse = await response.Content.ReadAsStringAsync();
+                var tmdbResponse = JsonConvert.DeserializeObject<TMDBMovieResponse>(jsonResponse);
+                return tmdbResponse.results;
             }
 
             return null;

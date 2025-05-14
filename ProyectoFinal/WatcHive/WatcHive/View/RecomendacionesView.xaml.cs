@@ -27,11 +27,12 @@ namespace WatcHive.View
             {
                 { "Feliz", new List<int> { 35, 10751 } },         // Comedia, Familia
                 { "Triste", new List<int> { 18, 10749 } },        // Drama, Romance
-                { "Enfadado", new List<int> { 28, 53 } },         // Accion, Thriller
-                { "Ansioso", new List<int> { 9648, 27 } },        // Misterio, Terror
-                { "Aburrido", new List<int> { 12, 14 } },         // Aventura, Fantasa
-                { "Relajado", new List<int> { 16, 10402 } },      // Animacion, Musica
-                { "Motivado", new List<int> { 99, 80 } },         // Documental, Crimen
+                { "Enfadado/a", new List<int> { 28, 53 } },         // Accion, Thriller
+                { "Ansioso/a", new List<int> { 9648, 27 } },        // Misterio, Terror
+                { "Aburrido/a", new List<int> { 12, 14 } },         // Aventura, Fantasa
+                { "Relajado/a", new List<int> { 16, 10402 } },      // Animacion, Musica
+                { "Motivado/a", new List<int> { 99, 80 } },         // Documental, Crimen
+                { "Indefinida", new List<int> { 99, 80 } },
             };
         private Usuario usuarioLoged;
         public RecomendacionesView(Usuario usuarioLoged)
@@ -229,6 +230,11 @@ namespace WatcHive.View
             if (element?.Tag is Serie serieData)
             {
                 var detalleWindow = new DetalleWindow(serieData, usuarioLoged);
+                detalleWindow.ShowDialog();
+            }
+            if (element?.Tag is Pelicula peliData)
+            {
+                var detalleWindow = new DetalleWindow(peliData, usuarioLoged);
                 detalleWindow.ShowDialog();
             }
         }

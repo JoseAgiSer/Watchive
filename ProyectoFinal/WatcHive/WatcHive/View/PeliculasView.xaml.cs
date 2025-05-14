@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using WatcHive.Domain.API;
 using WatcHive.Domain;
 using WatcHive.Persistence.Manages;
+using Newtonsoft.Json;
 
 namespace WatcHive.View
 {
@@ -32,6 +33,13 @@ namespace WatcHive.View
             usuarioLoged = usuario;
         }
 
+        public PeliculasView(Usuario usuario, string titulo)
+        {
+            InitializeComponent();
+            BuscarPorTitulo(titulo);
+            usuarioLoged = usuario;
+        }
+
         private async void LoadPopularPeliculas()
         {
             APIManager apiManager = new APIManager();
@@ -43,63 +51,23 @@ namespace WatcHive.View
 
                 Pelicula peliculaObj = convertirAPelicula(url,peli);
 
-                var stack = new StackPanel
-                {
-                    Width = 200,
-                    Margin = new Thickness(10),
-                    Cursor = Cursors.Hand
-                };
-
-                Image image = new Image
-                {
-                    Width = 150,
-                    Height = 225,
-                    Margin = new Thickness(10),
-                    Stretch = Stretch.UniformToFill,
-                    Tag = peliculaObj
-                };
-
-                try
-                {
-                    BitmapImage bitmap = new BitmapImage();
-                    bitmap.BeginInit();
-                    bitmap.UriSource = new Uri(url);
-                    bitmap.CacheOption = BitmapCacheOption.OnLoad;
-                    bitmap.EndInit();
-
-                    image.Source = bitmap;
-                }
-                catch
-                {
-                    // Manejo opcional de errores
-                }
-
-                image.MouseDown += ImageOrTitle_Click;
-
-                TextBlock title = new TextBlock
-                {
-                    Text = peli.title,
-                    Foreground = Brushes.Black,
-                    FontWeight = FontWeights.Bold,
-                    TextAlignment = TextAlignment.Center,
-                    TextWrapping = TextWrapping.Wrap,
-                    Margin = new Thickness(0, 5, 0, 0),
-                    Tag = peliculaObj
-                };
-
-                title.MouseDown += ImageOrTitle_Click;
-
-                stack.Children.Add(image);
-                stack.Children.Add(title);
-                PeliculasPanel.Children.Add(stack);
+                PeliculasPanel.Children.Add(CrearElementoVisual(peliculaObj));
             }
         }
         private Pelicula convertirAPelicula(string url, TMDBMovie peli)
         {
+            DateTime fechaEstreno = DateTime.MinValue;
+
+            if (!string.IsNullOrWhiteSpace(peli.releaseDate) &&
+                DateTime.TryParse(peli.releaseDate, out DateTime fechaParseada))
+            {
+                fechaEstreno = fechaParseada;
+            }
+
             Pelicula peliAdd = new Pelicula(
                 peli.id,
                 peli.title,
-                DateTime.Parse(peli.releaseDate),
+                fechaEstreno,
                 url,
                 peli.Overview,
                 peli.VoteAverage,
@@ -117,6 +85,89 @@ namespace WatcHive.View
             {
                 var detalleWindow = new DetalleWindow(peliData, usuarioLoged);
                 detalleWindow.ShowDialog();
+            }
+        }
+
+        private UIElement CrearElementoVisual(Contenido contenido)
+        {
+            var stack = new StackPanel
+            {
+                Width = 200,
+                Margin = new Thickness(10),
+                Cursor = Cursors.Hand
+            };
+
+            var image = new Image
+            {
+                Width = 150,
+                Height = 225,
+                Margin = new Thickness(10),
+                Stretch = Stretch.UniformToFill,
+                Tag = contenido,
+                HorizontalAlignment = HorizontalAlignment.Center
+            };
+            string urlImagen = contenido.imagen?.Replace("https://image.tmdb.org/t/p/w500", "").Trim();
+            bool imagenValida = !string.IsNullOrWhiteSpace(urlImagen);
+            if(imagenValida)
+            {
+                try
+                {
+                    var bitmap = new BitmapImage();
+                    bitmap.BeginInit();
+                    bitmap.UriSource = new Uri(contenido.imagen);
+                    bitmap.CacheOption = BitmapCacheOption.OnLoad;
+                    bitmap.EndInit();
+                    image.Source = bitmap;
+                }
+                catch
+                {
+                    image.Source = new BitmapImage(new Uri("pack://application:,,,/Resources/Images/imagendefault.jpg"));
+                }
+            }
+            else
+            {
+                image.Source = new BitmapImage(new Uri("pack://application:,,,/Resources/Images/imagendefault.jpg"));
+            }
+
+            image.MouseDown += ImageOrTitle_Click;
+
+            var title = new TextBlock
+            {
+                Text = contenido.nombre,
+                Foreground = Brushes.Black,
+                FontWeight = FontWeights.Bold,
+                TextAlignment = TextAlignment.Center,
+                TextWrapping = TextWrapping.Wrap,
+                Margin = new Thickness(0, 5, 0, 0),
+                Tag = contenido
+            };
+
+            title.MouseDown += ImageOrTitle_Click;
+
+            stack.Children.Add(image);
+            stack.Children.Add(title);
+            return stack;
+        }
+        private async void BuscarPorTitulo(string titulo)
+        {
+            APIManager api = new APIManager();
+
+            List<TMDBMovie> resultados = await api.SearchMoviesByTitleAsync(titulo);
+
+            if (resultados != null)
+            {
+                foreach (var peli in resultados)
+                {
+                    string url = $"https://image.tmdb.org/t/p/w500{peli.poster_path}";
+
+                    Pelicula peliculaObj = convertirAPelicula(url, peli);
+
+                    PeliculasPanel.Children.Add(CrearElementoVisual(peliculaObj));
+                }
+            }
+            else
+            {
+                MessageBox.Show("No se encontraron resultados o hubo un error con la API.");
             }
         }
     }

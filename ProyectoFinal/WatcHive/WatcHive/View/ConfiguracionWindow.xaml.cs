@@ -55,7 +55,7 @@ namespace WatcHive.View
             if (NewPassword.Password.Equals(newPasswordRep.Password))
             {
                 usuarioLoged.password = NewPassword.Password;
-                usuarioLoged.update();
+                usuarioLoged.updatePass();
                 MessageBox.Show("Contraseña actualizada correctamente.");
                 this.Close();
             }

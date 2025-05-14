@@ -6,7 +6,38 @@
              xmlns:local="clr-namespace:WatcHive.View"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
+    <Grid Background="White" Margin="20">
+        <Grid>
+            <!-- Columna izquierda: búsqueda + tabla -->
+            <StackPanel Grid.Column="0" Margin="10,10,10,60" Grid.ColumnSpan="2">
+                <TextBox Name="search" Width="250" Height="30" Margin="0,0,0,10"
+                         TextChanged="search_TextChanged" />
+
+                <DataGrid Name="tabla"
+                          AutoGenerateColumns="False"
+                          IsReadOnly="True"
+                          CanUserResizeRows="False"
+                          CanUserResizeColumns="False"
+                          HeadersVisibility="Column"
+                          Height="400"
+                          ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                          ScrollViewer.VerticalScrollBarVisibility="Auto">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Binding="{Binding id}" Width="auto" />
+                        <DataGridTextColumn Header="Nombre" Binding="{Binding nombre}" Width="auto" />
+                        <DataGridTextColumn Header="Estreno" Binding="{Binding fechaEstreno}" Width="auto" />
+                        <DataGridTextColumn Header="Descripción" Binding="{Binding descripcion}" Width="auto" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+        </Grid>
+
+        <!-- Botones inferiores -->
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Bottom"
+                    Margin="0,0,0,10">
+            <Button x:Name="btnEliminar" Content="Eliminar" Width="100" Click="btnEliminar_Click" Height="31" Style="{StaticResource LoginButtonStyle}" />
+        </StackPanel>
     </Grid>
 </UserControl>

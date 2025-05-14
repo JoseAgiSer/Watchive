@@ -34,10 +34,23 @@ namespace WatcHive.Persistence.Manages
         internal void modifyUsuario(Usuario u)
         {
             DBBroker broker = DBBroker.obtenerAgente();
+            broker.modifier("Update Usuarios set " +
+                "Contrasena = '" + u.password + "', " +
+                "Nombre = '" + u.nombre + "', " +
+                "Apellidos = '" + u.apellidos + "', " +
+                "NumeroHijos = " + u.numHijos + ", " +
+                "FechaNacimiento = '" + u.fechaNacimiento.ToString("yyyy-MM-dd") + "', " +
+                "Email = '" + u.email + "' " +
+                "WHERE NombreUsuario = '" + u.username + "'");
+        }
+
+        internal void modifyUsuarioPass(Usuario u)
+        {
+            DBBroker broker = DBBroker.obtenerAgente();
             broker.modifier("Update Usuarios set Contrasena = '" + u.password + "' where NombreUsuario = '" + u.username + "'");
         }
 
-        
+
         internal bool checkExistingUsuario(Usuario u)
         {
             bool existe=false;

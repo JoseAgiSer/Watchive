@@ -40,7 +40,7 @@ namespace WatcHive.Domain
             persistence.readSerie();
         }
 
-        public List<Serie> getListPeliculas()
+        public List<Serie> getListSeries()
         {
             return persistence.serieList;
         }

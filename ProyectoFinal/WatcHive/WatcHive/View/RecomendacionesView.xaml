@@ -22,7 +22,6 @@
                 <ComboBoxItem Content="Relajado/a"/>
                 <ComboBoxItem Content="Motivado/a"/>
                 <ComboBoxItem Content="Aburrido/a"/>
-                <ComboBoxItem Content="No lo se"/>
             </ComboBox>
 
             <StackPanel Orientation="Horizontal" Margin="20,0,0,0" VerticalAlignment="Center">

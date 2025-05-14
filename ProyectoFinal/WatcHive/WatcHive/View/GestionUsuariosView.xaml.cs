@@ -53,16 +53,16 @@ namespace WatcHive.View
             {
                 if (tabla.SelectedItem is Usuario usuarioSeleccionado)
                 {
-                    // Actualizar propiedades desde los campos del formulario
+
                     usuarioSeleccionado.username = usernamebox.Text;
-                    usuarioSeleccionado.password = passbox.Password;
+                    usuarioSeleccionado.password = passbox.Text;
                     usuarioSeleccionado.nombre = nombrebox.Text;
                     usuarioSeleccionado.apellidos = apellidosbox.Text;
                     usuarioSeleccionado.email = emailbox.Text;
                     usuarioSeleccionado.numHijos = int.TryParse(numhijosbox.Text, out int hijos) ? hijos : 0;
                     usuarioSeleccionado.fechaNacimiento = birthdaybox.SelectedDate ?? DateTime.Now;
 
-                    usuarioSeleccionado.update(); // Guardar cambios en BD
+                    usuarioSeleccionado.update();
 
                     tabla.Items.Refresh();
                     MessageBox.Show("Usuario modificado correctamente.");
@@ -72,7 +72,8 @@ namespace WatcHive.View
                     btnEliminar.IsEnabled = true;
                     usernamebox.IsEnabled = true;
                     tabla.IsHitTestVisible = true;
-                    btnAnadir.Content = "Dar de alta";
+                    btnAnadir.Content = "   Añadir   ";
+                    btnAnadir.IsEnabled = true;
 
                     LimpiarCamposFormulario();
                 }
@@ -84,14 +85,14 @@ namespace WatcHive.View
             else // Modo AÑADIR
             {
                 string username = usernamebox.Text;
-                string password = passbox.Password;
+                string password = passbox.Text;
                 string numhijos = numhijosbox.Text;
                 string nombre = nombrebox.Text;
                 string apellidos = apellidosbox.Text;
                 string email = emailbox.Text;
 
                 if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password) ||
-                    birthdaybox.SelectedDate !=null || string.IsNullOrEmpty(numhijos) || string.IsNullOrEmpty(nombre)|| string.IsNullOrEmpty(apellidos)||string.IsNullOrEmpty(email))
+                    birthdaybox.SelectedDate ==null || string.IsNullOrEmpty(numhijos) || string.IsNullOrEmpty(nombre)|| string.IsNullOrEmpty(apellidos)||string.IsNullOrEmpty(email))
                 {
                     MessageBox.Show("Se deben rellenar todos los campos del formulario correctamente");
                     return;
@@ -129,13 +130,61 @@ namespace WatcHive.View
 
         private void btnEliminar_Click(object sender, RoutedEventArgs e)
         {
+            
+            if (tabla.SelectedItem is Usuario usuarioSeleccionado)
+            {
+                // Confirmación opcional
+                var resultado = MessageBox.Show($"¿Estás seguro que deseas eliminar al usuario '{usuarioSeleccionado.username}'?",
+                                                "Confirmar eliminación", MessageBoxButton.YesNo, MessageBoxImage.Warning);
 
+                if (resultado == MessageBoxResult.Yes)
+                {
+                    usuarioSeleccionado.delete();
+
+                    List<Usuario> usuarios = (List<Usuario>)tabla.ItemsSource;
+                    usuarios.Remove(usuarioSeleccionado);
+
+                    tabla.Items.Refresh();
+                    MessageBox.Show("Usuario eliminado correctamente.");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Selecciona un usuario para eliminar.");
+            }
         }
 
         private void btnModificar_Click(object sender, RoutedEventArgs e)
         {
+            if (tabla.SelectedItem != null)
+            {
+                Usuario usuarioElegido = (Usuario)tabla.SelectedItem;
 
-        }
+                // Rellenar los campos con los datos del usuario seleccionado
+                usernamebox.Text = usuarioElegido.username;
+                passbox.Text = usuarioElegido.password;
+                nombrebox.Text = usuarioElegido.nombre;
+                apellidosbox.Text = usuarioElegido.apellidos;
+                emailbox.Text = usuarioElegido.email;
+                numhijosbox.Text = usuarioElegido.numHijos.ToString();
+                birthdaybox.SelectedDate = usuarioElegido.fechaNacimiento;
+
+                // Deshabilitar controles para evitar conflictos mientras se edita
+                btnModificar.IsEnabled = false;
+                btnEliminar.IsEnabled = false;
+                tabla.IsHitTestVisible = false;
+
+                // Cambiar el texto del botón para indicar modo actualización
+                btnAnadir.Content = "  Actualizar  ";
+                btnModificar.IsEnabled = false;
+                usernamebox.IsEnabled = false;
+            }
+            else
+            {
+                MessageBox.Show("Selecciona primero un usuario en la tabla.");
+            }
+        } 
+        
 
         private void LimpiarCamposFormulario()
         {
@@ -147,7 +196,6 @@ namespace WatcHive.View
             numhijosbox.Text = "0";
             birthdaybox.SelectedDate = null;
         }
-
 
         private void search_TextChanged(object sender, TextChangedEventArgs e)
         {

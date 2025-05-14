@@ -24,11 +24,10 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <StackPanel Grid.RowSpan="2" Orientation="Vertical" Name="sidebar">
+                <StackPanel Grid.RowSpan="2" Orientation="Vertical" Name="sidebar" Cursor="">
                     <Image Source="/Resources/Images/logoBlanco.png" Width="153" Height="48" Margin="0,15,0,50"/>
 
                     <Button Name="btnUsuarios" Content="Usuarios" Margin="10" Style="{StaticResource SidebarButtonStyle}"  Background="#C0392B" Click="btnUsuarios_Click"/>
-                    <Button Name="btnContenidos" Content="Contenidos" Margin="10" Style="{StaticResource SidebarButtonStyle}" Click="btnContenidos_Click" />
 
                 </StackPanel>
 

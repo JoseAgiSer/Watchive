@@ -35,7 +35,7 @@ namespace WatcHive.Persistence.Manages
 
         internal void readPeliculas()
         {
-            List<object> lpeliculas = DBBroker.obtenerAgente().leer("select c.Id, c.Nombre, c.FechaEstreno, c.Descripcion, c.Imagen, p.NumTemporadas FROM Contenido c JOIN Pelicula p ON c.Id = p.IdContenido");
+            List<object> lpeliculas = DBBroker.obtenerAgente().leer("select c.IdContenido, c.NombreContenido, c.FechaEstreno, c.Descripcion, c.Imagen, p.NotaMedia FROM Contenido c JOIN Pelicula p ON c.IdContenido = p.IdContenido");
 
             foreach (List<object> fila in lpeliculas)
             {

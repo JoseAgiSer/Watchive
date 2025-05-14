@@ -19,7 +19,7 @@ namespace WatcHive.Persistence.Manages
         internal void deleteUsuario(Usuario u)
         {
             DBBroker broker = DBBroker.obtenerAgente();
-            broker.modifier("Delete from Usuarios where UserName = '" + u.username + "'");
+            broker.modifier("Delete from Usuarios where NombreUsuario = '" + u.username + "'");
         }
 
         internal void insertUsuario(Usuario u)
@@ -34,7 +34,7 @@ namespace WatcHive.Persistence.Manages
         internal void modifyUsuario(Usuario u)
         {
             DBBroker broker = DBBroker.obtenerAgente();
-            broker.modifier("Update user set UserPass = '" + u.password + "' where UserName = '" + u.username + "'");
+            broker.modifier("Update Usuarios set Contrasena = '" + u.password + "' where NombreUsuario = '" + u.username + "'");
         }
 
         

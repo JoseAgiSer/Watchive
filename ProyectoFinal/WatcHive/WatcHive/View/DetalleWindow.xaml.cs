@@ -47,6 +47,7 @@ namespace WatcHive.View
 
         private void cargarDatos(Contenido contenidoData)
         {
+
             BitmapImage bitmap = new BitmapImage();
             bitmap.BeginInit();
             bitmap.UriSource = new Uri(contenidoData.imagen);

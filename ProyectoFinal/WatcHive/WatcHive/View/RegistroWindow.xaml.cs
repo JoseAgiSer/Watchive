@@ -76,6 +76,16 @@ namespace WatcHive.View
 
         }
 
+        private void SoloNumeros_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = !EsNumero(e.Text);
+        }
+
+        private bool EsNumero(string texto)
+        {
+            return texto.All(char.IsDigit);
+        }
+
         private bool comprobarVacios()
         {
             if(nombrebox.Text == null || nombrebox.Text.Equals(""))

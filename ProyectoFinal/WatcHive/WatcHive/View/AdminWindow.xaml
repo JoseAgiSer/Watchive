@@ -1,11 +1,11 @@
-﻿<Window x:Class="WatcHive.MainWindow"
+﻿<Window x:Class="WatcHive.View.AdminWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WatcHive"
+        xmlns:local="clr-namespace:WatcHive.View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="720" Width="1200" Cursor=""
+        Title="AdminWindow" Height="720" Width="1200" Cursor=""
         WindowStyle="None"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
@@ -27,11 +27,9 @@
                 <StackPanel Grid.RowSpan="2" Orientation="Vertical" Name="sidebar">
                     <Image Source="/Resources/Images/logoBlanco.png" Width="153" Height="48" Margin="0,15,0,50"/>
 
-                    <Button Name="btnMenuPeliculas" Content="Películas" Margin="10" Style="{StaticResource SidebarButtonStyle}" Click="btnMenuPeliculas_Click" Background="#C0392B"/>
-                    <Button Name="btnMenuSeries" Content="Series" Margin="10" Style="{StaticResource SidebarButtonStyle}" Click="btnMenuSeries_Click"/>
-                    <Button Name="btnMenuListas" Content="Mis listas" Margin="10" Style="{StaticResource SidebarButtonStyle}" Click="btnMenuListas_Click"/>
-                    <Button Name="btnMenuEmocion" Content="Recomendaciones" Margin="10" Style="{StaticResource SidebarButtonStyle}" Click="btnMenuEmocion_Click"/>
-                    <Button Name="btnMenuConfiguracion" Content="Configuración" Margin="10,310,10,10" Style="{StaticResource SidebarButtonStyle}" Click="btnMenuConfiguracion_Click"/>
+                    <Button Name="btnUsuarios" Content="Usuarios" Margin="10" Style="{StaticResource SidebarButtonStyle}"  Background="#C0392B" Click="btnUsuarios_Click"/>
+                    <Button Name="btnContenidos" Content="Contenidos" Margin="10" Style="{StaticResource SidebarButtonStyle}" Click="btnContenidos_Click" />
+
                 </StackPanel>
 
                 <StackPanel Grid.Column="1" Grid.Row="0" VerticalAlignment="Top" Margin="0,13,0,0">
@@ -47,18 +45,6 @@
                             <RowDefinition Height="40"/>
                         </Grid.RowDefinitions>
 
-                        <TextBox Width="auto" Margin="18,10,204,0" VerticalAlignment="Top"
-                             Text="Titulo..."  Style="{StaticResource IconTextBoxStyle}"
-                             Grid.Column="0" Grid.Row="0" Height="28"/>
-
-                        <Button Name="btnSearch" Content="Buscar" Height="40" VerticalAlignment="Top" Width="80" 
-                            Margin="686,20,70,0" Style="{StaticResource LoginButtonStyle}" 
-                            Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"/>
-
-                        <TextBlock Name="tagNombreUser" Text="User" FontWeight="Bold" HorizontalAlignment="Left"
-                           VerticalAlignment="Top" Margin="766,11,0,0"
-                           Height="26" Width="124" Foreground="White" FontSize="16" TextAlignment="Right" Grid.ColumnSpan="2"/>
-
                         <Button x:Name="btnMinimizar"
                             HorizontalAlignment="Center"
                             Style="{StaticResource CloseButtonStyle}"
@@ -73,24 +59,17 @@
                             Grid.Column="2" Grid.Row="0"
                             Margin="33,0,23,0" Grid.ColumnSpan="2"/>
 
-                        <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.ColumnSpan="4" Margin="18,0,0,0">
-                            <TextBlock Text="Plataforma:" VerticalAlignment="Center" Foreground="White" Margin="74,0,10,0"
-                                       FontWeight="Bold" FontFamily="Montserrat"/>
-                            <ComboBox x:Name="cmbPlataformas" Width="150" Height="25" Margin="0,0,15,0"/>
+                        <TextBlock Text="Vista de Administrador" VerticalAlignment="Top" Foreground="White" Margin="246,14,246,0"
+                                       FontWeight="Bold" FontFamily="Montserrat" FontSize="27" Grid.RowSpan="2"/>
 
-                            <TextBlock Text="Género:" VerticalAlignment="Center" Foreground="White" Margin="84,0,10,0"
-                                       FontWeight="Bold" FontFamily="Montserrat"/>
-                            <ComboBox x:Name="cmbGeneros" Height="24" Width="150"/>
-
-                        </StackPanel>
                     </Grid>
                 </StackPanel>
 
-                <ContentControl x:Name="MainContent"
+                <ContentControl x:Name="MainContentAdmin"
                     Grid.Column="1"
                     Grid.Row="1"
                     Margin="20,20,20,20"/>
-                
+
             </Grid>
         </Border>
     </Border>

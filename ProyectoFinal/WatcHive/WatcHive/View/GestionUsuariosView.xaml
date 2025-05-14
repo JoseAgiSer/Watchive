@@ -1,0 +1,89 @@
+﻿<UserControl x:Class="WatcHive.View.GestionUsuariosView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WatcHive.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="1000">
+
+    <Grid Background="White" Margin="20">
+
+        <!-- Estructura principal con dos columnas -->
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="101*" />
+                <ColumnDefinition Width="59*" />
+            </Grid.ColumnDefinitions>
+
+            <!-- Columna izquierda: búsqueda + tabla -->
+            <StackPanel Grid.Column="0" Margin="10,10,10,60">
+                <TextBox Name="search" Width="250" Height="30" Margin="0,0,0,10" 
+                         TextChanged="search_TextChanged"/>
+
+                <DataGrid Name="tabla"
+                          AutoGenerateColumns="False"
+                          IsReadOnly="True"
+                          CanUserResizeRows="False"
+                          CanUserResizeColumns="False"
+                          HeadersVisibility="Column"
+                          Height="400"
+                          ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                          ScrollViewer.VerticalScrollBarVisibility="Auto"
+                          >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Nombre de usuario" Binding="{Binding username}" Width="auto" />
+                        <DataGridTextColumn Header="Nombre" Binding="{Binding nombre}" Width="auto" />
+                        <DataGridTextColumn Header="Apellidos" Binding="{Binding apellidos}" Width="auto" />
+                        <DataGridTextColumn Header="Nacimiento" Binding="{Binding fechaNacimiento}" Width="auto" />
+                        <DataGridTextColumn Header="Hijos" Binding="{Binding numHijos}" Width="auto" />
+                        <DataGridTextColumn Header="Correo electronico" Binding="{Binding email}" Width="auto" />
+                        <DataGridTextColumn Header="Contraseña" Binding="{Binding password}" Width="auto" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </StackPanel>
+
+            <!-- Columna derecha: formulario con Scroll -->
+            <ScrollViewer Grid.Column="1" VerticalScrollBarVisibility="Auto" Margin="10,10,10,60">
+                <StackPanel Width="320" HorizontalAlignment="Left">
+
+                    <TextBlock Text="Nombre" Style="{StaticResource FormLabelStyle}" />
+                    <TextBox Name="nombrebox" Style="{StaticResource IconTextBoxStyle}" Width="300" />
+
+                    <TextBlock Text="Apellidos" Style="{StaticResource FormLabelStyle}" />
+                    <TextBox Name="apellidosbox" Style="{StaticResource IconTextBoxStyle}" Width="300" />
+
+                    <TextBlock Text="Fecha de nacimiento" Style="{StaticResource FormLabelStyle}" />
+                    <DatePicker Name="birthdaybox" Style="{StaticResource DatePickerStyle}" Width="300" />
+
+                    <TextBlock Text="Número de hijos" Style="{StaticResource FormLabelStyle}" />
+                    <TextBox Name="numhijosbox" Style="{StaticResource IconTextBoxStyle}"
+                             Width="300" MaxLength="2" Text="0"
+                             PreviewTextInput="SoloNumeros_PreviewTextInput" />
+
+                    <TextBlock Text="Correo electrónico" Style="{StaticResource FormLabelStyle}" />
+                    <TextBox Name="emailbox" Style="{StaticResource IconTextBoxStyle}" Width="300" />
+
+                    <TextBlock Text="Nombre de usuario" Style="{StaticResource FormLabelStyle}" />
+                    <TextBox Name="usernamebox" Style="{StaticResource IconTextBoxStyle}" Width="300" />
+
+                    <TextBlock Text="Contraseña" Style="{StaticResource FormLabelStyle}" />
+                    <PasswordBox Name="passbox" Style="{StaticResource IconPasswordBoxStyle}" Width="300" />
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+
+        <!-- Botones inferiores centrados -->
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Bottom"
+                    Margin="0,0,0,10">
+            <Button Name="btnAnadir" Content="Añadir" Margin="10,0" Width="100"
+                    Style="{StaticResource LoginButtonStyle}" Click="btnAnadir_Click"/>
+            <Button Name="btnEliminar" Content="Eliminar" Margin="10,0" Width="100"
+                    Style="{StaticResource LoginButtonStyle}" Click="btnEliminar_Click"/>
+            <Button Name="btnModificar" Content="Modificar" Margin="10,0" Width="100"
+                    Style="{StaticResource LoginButtonStyle}" Click="btnModificar_Click"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

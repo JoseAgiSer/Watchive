@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO.Ports;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -105,6 +106,12 @@ namespace WatcHive
             MainContent.Content = new RecomendacionesView(usuarioLoged);
             UIElementCollection elementos = sidebar.Children;
             setBackgroundBtn(sender);
+        }
+
+        private void btnMenuConfiguracion_Click(object sender, RoutedEventArgs e)
+        {
+            var configWindow = new ConfiguracionWindow(usuarioLoged);
+            configWindow.ShowDialog();
         }
     }
 }

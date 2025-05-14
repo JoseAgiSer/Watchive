@@ -65,10 +65,19 @@ namespace WatcHive.View
 
             if (buscado != null && buscado.password.Equals(passbox.Password))
             {
-                var mainw = new MainWindow(buscado);
-                App.Current.MainWindow = mainw;
-                mainw.Show();
-                this.Close();
+                if (!buscado.nombre.Equals("admin"))
+                {
+                    var mainw = new MainWindow(buscado);
+                    App.Current.MainWindow = mainw;
+                    mainw.Show();
+                    this.Close();
+                }
+                else {
+                    var mainw = new AdminWindow();
+                    App.Current.MainWindow = mainw;
+                    mainw.Show();
+                    this.Close();
+                }
             }
             else {
                 MessageBox.Show("Usuario o contraseña incorrectos");

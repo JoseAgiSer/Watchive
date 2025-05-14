@@ -82,8 +82,7 @@ namespace WatcHive.View
                 var stack = new StackPanel
                 {
                     Width = 150,
-                    Margin = new Thickness(10),
-                    Cursor = Cursors.Hand
+                    Margin = new Thickness(10)
                 };
 
                 Image image = new Image

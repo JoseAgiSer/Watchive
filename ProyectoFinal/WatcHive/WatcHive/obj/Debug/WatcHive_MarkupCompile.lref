@@ -1,13 +1,17 @@
 ﻿
 FC:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\App.xaml;;
+FC:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\View\AdminWindow.xaml;;
+FC:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\View\AgregarVistoWindow.xaml;;
+FC:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\View\ConfiguracionWindow.xaml;;
 FC:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\View\DetalleWindow.xaml;;
+FC:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\View\GestionContenidosView.xaml;;
+FC:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\View\GestionUsuariosView.xaml;;
 FC:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\View\ListasUserView.xaml;;
 FC:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\View\LoginWindow.xaml;;
 FC:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\View\MainWindow.xaml;;
 FC:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\View\PeliculasView.xaml;;
+FC:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\View\RecomendacionesView.xaml;;
 FC:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\View\RegistroWindow.xaml;;
 FC:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\View\SeriesView.xaml;;
 FC:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\View\SeriesWindow.xaml;;
-FC:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\View\AgregarVistoWindow.xaml;;
-FC:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\View\RecomendacionesView.xaml;;
 

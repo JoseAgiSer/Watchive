@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\App.xaml
-10943988964
+14-692320063
 
-40-728410610
+44-1771572235
 35-2127156718
-View\AgregarVistoWindow.xaml;View\DetalleWindow.xaml;View\ListasUserView.xaml;View\LoginWindow.xaml;View\MainWindow.xaml;View\PeliculasView.xaml;View\RecomendacionesView.xaml;View\RegistroWindow.xaml;View\SeriesView.xaml;View\SeriesWindow.xaml;
+View\AdminWindow.xaml;View\AgregarVistoWindow.xaml;View\ConfiguracionWindow.xaml;View\DetalleWindow.xaml;View\GestionContenidosView.xaml;View\GestionUsuariosView.xaml;View\ListasUserView.xaml;View\LoginWindow.xaml;View\MainWindow.xaml;View\PeliculasView.xaml;View\RecomendacionesView.xaml;View\RegistroWindow.xaml;View\SeriesView.xaml;View\SeriesWindow.xaml;
 
 False
 

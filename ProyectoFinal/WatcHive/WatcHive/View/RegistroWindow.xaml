@@ -68,7 +68,8 @@
                             <DatePicker Name="birthdaybox" Style="{StaticResource DatePickerStyle}" Width="300"/>
 
                             <TextBlock Text="Número de hijos" Style="{StaticResource FormLabelStyle}"/>
-                            <TextBox Name="numhijosbox" Style="{StaticResource IconTextBoxStyle}" Width="300" MaxLength="2" Text="0"/>
+                            <TextBox Name="numhijosbox" Style="{StaticResource IconTextBoxStyle}" Width="300" MaxLength="2" Text="0"
+                                     PreviewTextInput="SoloNumeros_PreviewTextInput"/>
 
                             <TextBlock Text="Correo electrónico" Style="{StaticResource FormLabelStyle}"/>
                             <TextBox Name="emailbox" Style="{StaticResource IconTextBoxStyle}" Width="300" />

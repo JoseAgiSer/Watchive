@@ -19,6 +19,8 @@ namespace WatcHive.Persistence.Manages
         internal void deleteUsuario(Usuario u)
         {
             DBBroker broker = DBBroker.obtenerAgente();
+            broker.modifier("Delete from ContenidoVisto WHERE NombreUsuario = '"+ u.username + "'");
+            broker.modifier("Delete from ListaPendientes WHERE NombreUsuario = '" + u.username + "'");
             broker.modifier("Delete from Usuarios where NombreUsuario = '" + u.username + "'");
         }
 

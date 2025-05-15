@@ -139,6 +139,11 @@ namespace WatcHive.View
 
                 if (resultado == MessageBoxResult.Yes)
                 {
+                    if (usuarioSeleccionado.username.Equals("admin"))
+                    {
+                        MessageBox.Show("No puedes eliminar este usuario");
+                        return;
+                    }
                     usuarioSeleccionado.delete();
 
                     List<Usuario> usuarios = (List<Usuario>)tabla.ItemsSource;

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Google.Protobuf.WellKnownTypes;
+using System;
 using System.Collections.Generic;
 using System.IO.Ports;
 using System.Linq;
@@ -14,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WatcHive.Domain;
+using WatcHive.Persistence.Manages;
 using WatcHive.View;
 
 namespace WatcHive
@@ -25,22 +27,31 @@ namespace WatcHive
     {
         private Usuario usuarioLoged;
         private string vistaActual = "peliculas";
+        Dictionary<string, int> plataformas;
         public MainWindow(Usuario usuario)
         {
             InitializeComponent();
             usuarioLoged = usuario;
             tagNombreUser.Text = usuarioLoged.username;
             MainContent.Content = new PeliculasView(usuarioLoged);
-            rellenarCboxFiltros();
+            rellenarCboxFiltrosAsync();
+
         }
 
-        private void rellenarCboxFiltros()
+        private async Task rellenarCboxFiltrosAsync()
         {
             Genero g = new Genero();
             g.readGenero();
             foreach (Genero genero in g.getListGenero())
             {
-                cmbGeneros.Items.Add(genero.nombreGenero);
+                if (genero.tipo.Equals("pelicula") || genero.tipo.Equals("both"))
+                    cmbGeneros.Items.Add(genero.nombreGenero);
+            }
+            APIManager api = new APIManager();
+            plataformas = await api.GetProvidersAsync();
+            foreach (var plataforma in plataformas)
+            {
+                cmbPlataformas.Items.Add(plataforma.Key);
             }
         }
 
@@ -62,6 +73,14 @@ namespace WatcHive
 
         private void btnMenuPeliculas_Click(object sender, RoutedEventArgs e)
         {
+            Genero g = new Genero();
+            g.readGenero();
+            cmbGeneros.Items.Clear();
+            foreach (Genero genero in g.getListGenero())
+            {
+                if (genero.tipo.Equals("pelicula")||genero.tipo.Equals("both"))
+                    cmbGeneros.Items.Add(genero.nombreGenero);
+            }
             vistaActual = "peliculas";
             MainContent.Content = new PeliculasView(usuarioLoged);
             UIElementCollection elementos = sidebar.Children;
@@ -70,6 +89,14 @@ namespace WatcHive
 
         private void btnMenuSeries_Click(object sender, RoutedEventArgs e)
         {
+            Genero g = new Genero();
+            g.readGenero();
+            cmbGeneros.Items.Clear();
+            foreach (Genero genero in g.getListGenero())
+            {
+                if (genero.tipo.Equals("serie") || genero.tipo.Equals("both"))
+                    cmbGeneros.Items.Add(genero.nombreGenero);
+            }
             vistaActual = "series";
             MainContent.Content = new SeriesView(usuarioLoged);
             UIElementCollection elementos = sidebar.Children;
@@ -136,19 +163,49 @@ namespace WatcHive
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
-            if (!txtBusqueda.Text.Equals("Titulo..."))
+            string titulo = txtBusqueda.Text.Trim();
+            if (!txtBusqueda.Text.Equals("Titulo...") && !string.IsNullOrWhiteSpace(titulo))
             {
-                string titulo = txtBusqueda.Text.Trim();
-                if (string.IsNullOrWhiteSpace(titulo)) return;
-
+                //Filtrar por titulo
                 if (vistaActual.Equals("peliculas"))
                 {
-                    var vistaPeliculas = new PeliculasView(usuarioLoged, titulo);
+                    var vistaPeliculas = new PeliculasView(usuarioLoged, titulo,"TITULO");
                     MainContent.Content = vistaPeliculas;
                 }
                 else if (vistaActual.Equals("series"))
                 {
-                    var vistaSeries = new SeriesView(usuarioLoged, titulo);
+                    var vistaSeries = new SeriesView(usuarioLoged, titulo, "TITULO");
+                    MainContent.Content = vistaSeries;
+                }
+            }
+            else if (cmbGeneros.SelectedIndex != -1) {
+                
+                // Filtrar por genero
+                string genero = cmbGeneros.SelectedItem.ToString();
+                if (vistaActual.Equals("peliculas"))
+                {
+                    var vistaPeliculas = new PeliculasView(usuarioLoged, genero, "GENERO");
+                    MainContent.Content = vistaPeliculas;
+                }
+                else if (vistaActual.Equals("series"))
+                {
+                    var vistaSeries = new SeriesView(usuarioLoged, genero, "GENERO");
+                    MainContent.Content = vistaSeries;
+                }
+
+            }
+            else if (cmbPlataformas.SelectedIndex != -1)
+            {
+                // Filtrar por plataforma
+                string plataforma = cmbPlataformas.SelectedItem.ToString();
+                if (vistaActual.Equals("peliculas"))
+                {
+                    var vistaPeliculas = new PeliculasView(usuarioLoged, plataforma, "PLATAFORMA");
+                    MainContent.Content = vistaPeliculas;
+                }
+                else if (vistaActual.Equals("series"))
+                {
+                    var vistaSeries = new SeriesView(usuarioLoged, plataforma, "PLATAFORMA");
                     MainContent.Content = vistaSeries;
                 }
             }

@@ -112,6 +112,7 @@
     </ApplicationDefinition>
     <Compile Include="Domain\API\TMDBGenreResponse.cs" />
     <Compile Include="Domain\API\TMDBMovie.cs" />
+    <Compile Include="Domain\API\TMDBProvider.cs" />
     <Compile Include="Domain\API\TMDBTVSearchResponse.cs" />
     <Compile Include="Domain\API\TVShowDTO.cs" />
     <Compile Include="Domain\ContenidoGenero.cs" />

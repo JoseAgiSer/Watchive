@@ -86,16 +86,20 @@ namespace WatcHive.Persistence.Manages
             return new List<TVShowDTO>();
         }
 
-        public async Task<string> GetMoviesByGenreAsync(int genreId, int page = 1)
+        public async Task<List<TMDBMovie>> GetMoviesByGenreAsync(int genreId, int page = 1)
         {
             string url = $"{_baseUrl}/discover/movie?api_key={_apiKey}&language=es-ES&with_genres={genreId}&page={page}";
 
             HttpResponseMessage response = await _httpClient.GetAsync(url);
-            if (response.IsSuccessStatusCode){
-                return await response.Content.ReadAsStringAsync();
+            if (response.IsSuccessStatusCode)
+            {
+                string jsonResponse = await response.Content.ReadAsStringAsync();
+                var result = JsonConvert.DeserializeObject<TMDBMovieResponse>(jsonResponse);
+                return result.results;
             }
 
-            return null;
+            return new List<TMDBMovie>();
+
         }
 
         public async Task<List<TVShowDTO>> GetSeriesByGenreAsync(int genreId)
@@ -161,6 +165,54 @@ namespace WatcHive.Persistence.Manages
             }
 
             return new List<TVShowDTO>();
+        }
+
+        public async Task<List<TMDBMovie>> GetMoviesByProviderAsync(int providerId, string region = "ES")
+        {
+            string url = $"{_baseUrl}/discover/movie?api_key={_apiKey}&language=es-ES&watch_region={region}&with_watch_providers={providerId}&sort_by=popularity.desc";
+
+            HttpResponseMessage response = await _httpClient.GetAsync(url);
+
+            if (response.IsSuccessStatusCode)
+            {
+                string jsonResponse = await response.Content.ReadAsStringAsync();
+                var tmdbResponse = JsonConvert.DeserializeObject<TMDBMovieResponse>(jsonResponse);
+                return tmdbResponse.results;
+            }
+
+            return new List<TMDBMovie>();
+        }
+
+        public async Task<List<TVShowDTO>> GetSeriesByProviderAsync(int providerId, string region = "ES")
+        {
+            string url = $"{_baseUrl}/discover/tv?api_key={_apiKey}&language=es-ES&watch_region={region}&with_watch_providers={providerId}&sort_by=popularity.desc";
+
+            HttpResponseMessage response = await _httpClient.GetAsync(url);
+
+            if (response.IsSuccessStatusCode)
+            {
+                string jsonResponse = await response.Content.ReadAsStringAsync();
+                var tmdbResponse = JsonConvert.DeserializeObject<TMDBTVSearchResponse>(jsonResponse);
+                return tmdbResponse.results;
+            }
+
+            return new List<TVShowDTO>();
+        }
+
+        public async Task<Dictionary<string, int>> GetProvidersAsync(string region = "ES")
+        {
+            string url = $"{_baseUrl}/watch/providers/movie?api_key={_apiKey}&language=es-ES&watch_region={region}";
+
+            HttpResponseMessage response = await _httpClient.GetAsync(url);
+
+            if (response.IsSuccessStatusCode)
+            {
+                string jsonResponse = await response.Content.ReadAsStringAsync();
+                var providerResponse = JsonConvert.DeserializeObject<TMDBProviderResponse>(jsonResponse);
+                return providerResponse.results.ToDictionary(p => p.provider_name, p => p.provider_id);
+            }
+
+            return new Dictionary<string, int>();
         }
     }
 }

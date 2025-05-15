@@ -33,10 +33,21 @@ namespace WatcHive.View
             usuarioLoged = usuario;
         }
 
-        public PeliculasView(Usuario usuario, string titulo)
+        public PeliculasView(Usuario usuario, string filtro, string busqueda)
         {
             InitializeComponent();
-            BuscarPorTitulo(titulo);
+            if (busqueda.Equals("TITULO"))
+            {
+                BuscarPorTitulo(filtro);
+            }
+            else if (busqueda.Equals("GENERO"))
+            {
+                BuscarPorGenero(filtro);
+            }
+            else if (busqueda.Equals("PLATAFORMA"))
+            {
+                BuscarPorPlataforma(filtro);
+            }
             usuarioLoged = usuario;
         }
 
@@ -161,6 +172,62 @@ namespace WatcHive.View
                     string url = $"https://image.tmdb.org/t/p/w500{peli.poster_path}";
 
                     Pelicula peliculaObj = convertirAPelicula(url, peli);
+
+                    PeliculasPanel.Children.Add(CrearElementoVisual(peliculaObj));
+                }
+            }
+            else
+            {
+                MessageBox.Show("No se encontraron resultados o hubo un error con la API.");
+            }
+        }
+        private async void BuscarPorPlataforma(string plataforma)
+        {
+            APIManager api = new APIManager();
+            Dictionary<string, int> plataformas = await api.GetProvidersAsync();
+
+            if (!plataformas.TryGetValue(plataforma, out int providerId))
+            {
+                MessageBox.Show("No se encontró el proveedor especificado.");
+                return;
+            }
+
+            List<TMDBMovie> resultados = await api.GetMoviesByProviderAsync(providerId);
+
+            if (resultados != null)
+            {
+                foreach (var peli in resultados)
+                {
+                    string url = $"https://image.tmdb.org/t/p/w500{peli.poster_path}";
+
+                    Pelicula peliculaObj = convertirAPelicula(url, peli);
+
+                    PeliculasPanel.Children.Add(CrearElementoVisual(peliculaObj));
+                }
+            }
+            else
+            {
+                MessageBox.Show("No se encontraron resultados o hubo un error con la API.");
+            }
+        }
+
+        private async void BuscarPorGenero(string genero)
+        {
+            APIManager api = new APIManager();
+
+            Genero gen = new Genero();
+
+            int idgenero = gen.getIdByName(genero);
+
+            List<TMDBMovie> resultados = await api.GetMoviesByGenreAsync(idgenero);
+
+            if (resultados != null)
+            {
+                foreach (var serie in resultados)
+                {
+                    string url = $"https://image.tmdb.org/t/p/w500{serie.poster_path}";
+
+                    Pelicula peliculaObj = convertirAPelicula(url, serie);
 
                     PeliculasPanel.Children.Add(CrearElementoVisual(peliculaObj));
                 }

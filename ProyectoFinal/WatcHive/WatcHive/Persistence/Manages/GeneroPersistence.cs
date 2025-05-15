@@ -39,6 +39,7 @@ namespace WatcHive.Persistence.Manages
                 g = new Genero();
                 g.id = Convert.ToInt32(aux[0].ToString());
                 g.nombreGenero = aux[1].ToString();
+                g.tipo = aux[2].ToString();
                 this.generoList.Add(g);
             }
         }
@@ -93,6 +94,22 @@ namespace WatcHive.Persistence.Manages
 
             return auxlist.First().nombreGenero;
             
+        }
+
+        internal int getidByName(string nombre)
+        {
+            List<Object> lgeneros;
+            List<Genero> auxlist = new List<Genero>();
+            lgeneros = DBBroker.obtenerAgente().leer("select * from Genero where NombreGenero = '" + nombre+"'");
+            foreach (List<Object> aux in lgeneros)
+            {
+                Genero g = new Genero();
+                g.id = Convert.ToInt32(aux[0].ToString());
+                g.nombreGenero = aux[1].ToString();
+                auxlist.Add(g);
+            }
+
+            return auxlist.First().id;
         }
     }
 }

@@ -34,11 +34,79 @@ namespace WatcHive.View
             usuarioLoged = usuario;
         }
 
-        public SeriesView(Usuario usuario, string titulo)
+        public SeriesView(Usuario usuario, string filtro, string busqueda)
         {
             InitializeComponent();
-            BuscarPorTitulo(titulo);
+            if (busqueda.Equals("TITULO"))
+            {
+                BuscarPorTitulo(filtro);
+            }
+            else if (busqueda.Equals("GENERO"))
+            {
+                BuscarPorGenero(filtro);
+            }
+            else if (busqueda.Equals("PLATAFORMA"))
+            {
+                BuscarPorPlataforma(filtro);
+            }
             usuarioLoged = usuario;
+        }
+
+        private async void BuscarPorPlataforma(string plataforma)
+        {
+            APIManager api = new APIManager();
+            Dictionary<string, int> plataformas = await api.GetProvidersAsync();
+
+            if (!plataformas.TryGetValue(plataforma, out int providerId))
+            {
+                MessageBox.Show("No se encontró el proveedor especificado.");
+                return;
+            }
+
+            List<TVShowDTO> resultados = await api.GetSeriesByProviderAsync(providerId);
+
+            if (resultados != null)
+            {
+                foreach (var serie in resultados)
+                {
+                    string url = $"https://image.tmdb.org/t/p/w500{serie.poster_path}";
+
+                    Serie peliculaObj = convertirASerie(url, serie);
+
+                    SeriesPanel.Children.Add(CrearElementoVisual(peliculaObj));
+                }
+            }
+            else
+            {
+                MessageBox.Show("No se encontraron resultados o hubo un error con la API.");
+            }
+        }
+
+        private async void BuscarPorGenero(string genero)
+        {
+            APIManager api = new APIManager();
+
+            Genero gen = new Genero();
+
+            int idgenero = gen.getIdByName(genero);
+
+            List<TVShowDTO> resultados = await api.GetSeriesByGenreAsync(idgenero);
+
+            if (resultados != null)
+            {
+                foreach (var serie in resultados)
+                {
+                    string url = $"https://image.tmdb.org/t/p/w500{serie.poster_path}";
+
+                    Serie peliculaObj = convertirASerie(url, serie);
+
+                    SeriesPanel.Children.Add(CrearElementoVisual(peliculaObj));
+                }
+            }
+            else
+            {
+                MessageBox.Show("No se encontraron resultados o hubo un error con la API.");
+            }
         }
 
         private async void LoadPopularSeries()
@@ -108,16 +176,25 @@ namespace WatcHive.View
                 Tag = contenido
             };
 
-            try
+            string urlImagen = contenido.imagen?.Replace("https://image.tmdb.org/t/p/w500", "").Trim();
+            bool imagenValida = !string.IsNullOrWhiteSpace(urlImagen);
+            if (imagenValida)
             {
-                var bitmap = new BitmapImage();
-                bitmap.BeginInit();
-                bitmap.UriSource = new Uri(contenido.imagen);
-                bitmap.CacheOption = BitmapCacheOption.OnLoad;
-                bitmap.EndInit();
-                image.Source = bitmap;
+                try
+                {
+                    var bitmap = new BitmapImage();
+                    bitmap.BeginInit();
+                    bitmap.UriSource = new Uri(contenido.imagen);
+                    bitmap.CacheOption = BitmapCacheOption.OnLoad;
+                    bitmap.EndInit();
+                    image.Source = bitmap;
+                }
+                catch
+                {
+                    image.Source = new BitmapImage(new Uri("pack://application:,,,/Resources/Images/imagendefault.jpg"));
+                }
             }
-            catch
+            else
             {
                 image.Source = new BitmapImage(new Uri("pack://application:,,,/Resources/Images/imagendefault.jpg"));
             }

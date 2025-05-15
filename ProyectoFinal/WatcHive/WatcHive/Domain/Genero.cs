@@ -11,6 +11,7 @@ namespace WatcHive.Domain
     {
         private int _id;
         private string _nombreGenero;
+        private string _tipo;
 
         private GeneroPersistence persistence { get; set; }
 
@@ -20,10 +21,12 @@ namespace WatcHive.Domain
             _id = id;
             _nombreGenero = nombreGenero;
             persistence = new GeneroPersistence();
+            _tipo = "both";
         }
 
         public int id { get => _id; set => _id = value; }
         public string nombreGenero { get => _nombreGenero; set => _nombreGenero = value; }
+        public string tipo { get => _tipo; set => _tipo = value; }
 
         public void readGenero()
         {
@@ -73,6 +76,11 @@ namespace WatcHive.Domain
         internal void insertGenerosInicio()
         {
             persistence.insertInicio();
+        }
+
+        internal int getIdByName(string genero)
+        {
+            return persistence.getidByName(genero);
         }
     }
 }

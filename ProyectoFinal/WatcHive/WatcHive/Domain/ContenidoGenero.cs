@@ -12,7 +12,9 @@ namespace WatcHive.Domain
         public int _idContenido;
         public List<int> _idGeneros;
         public ContenidoGeneroPersistence persistenceContenidoGenero { get; set; }
-        public ContenidoGenero() { persistenceContenidoGenero = new ContenidoGeneroPersistence(); }
+        public ContenidoGenero() {
+            _idGeneros = new List<int>();
+            persistenceContenidoGenero = new ContenidoGeneroPersistence(); }
 
         public ContenidoGenero(int idContenido, List<int> idGenero)
         {

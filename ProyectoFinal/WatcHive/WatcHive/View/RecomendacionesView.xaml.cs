@@ -23,7 +23,7 @@ namespace WatcHive.View
     public partial class RecomendacionesView : UserControl
     {
 
-        public Dictionary<string, List<int>> emocionGeneros = new Dictionary<string, List<int>>
+        public Dictionary<string, List<int>> emocionGenerospelis = new Dictionary<string, List<int>>
             {
                 { "Feliz", new List<int> { 35, 10751 } },         // Comedia, Familia
                 { "Triste", new List<int> { 18, 10749 } },        // Drama, Romance
@@ -34,6 +34,20 @@ namespace WatcHive.View
                 { "Motivado/a", new List<int> { 99, 80 } },         // Documental, Crimen
                 { "Indefinida", new List<int> { 99, 80 } },
             };
+
+        public Dictionary<string, List<int>> emocionGenerosseries = new Dictionary<string, List<int>>
+            {
+                { "Feliz", new List<int> { 35, 10751 } },         // Comedia, Familia
+                { "Triste", new List<int> { 18, 10749 } },        // Drama, Romance
+                { "Enfadado/a", new List<int> { 10759, 9648 } },         // Accion, Thriller
+                { "Ansioso/a", new List<int> { 9648, 18 } },        // Misterio, Terror
+                { "Aburrido/a", new List<int> { 10765, 10759 } },         // Aventura, Fantasa
+                { "Relajado/a", new List<int> { 16, 10751 } },      // Animacion, Musica
+                { "Motivado/a", new List<int> { 99, 80 } },         // Documental, Crimen
+                { "Indefinida", new List<int> { 99, 80 } },
+            };
+
+
         private Usuario usuarioLoged;
         public RecomendacionesView(Usuario usuarioLoged)
         {
@@ -55,7 +69,7 @@ namespace WatcHive.View
 
             wrapRecomendaciones.Children.Clear();
 
-            if (!emocionGeneros.ContainsKey(emocion))
+            if (!emocionGenerospelis.ContainsKey(emocion))
             {
                 MessageBox.Show("Por favor, selecciona una emoción válida.");
                 return;
@@ -95,7 +109,7 @@ namespace WatcHive.View
                 else
                 {
                     //Defaulr
-                    var peliculas = await api.GetMoviesByGenresAsync(emocionGeneros[emocion]);
+                    var peliculas = await api.GetMoviesByGenresAsync(emocionGenerospelis[emocion]);
                     foreach (var peli in peliculas)
                     {
                         Pelicula pelicula = new Pelicula
@@ -121,12 +135,21 @@ namespace WatcHive.View
                     var series = await api.GetSeriesByGenresAsync(generos);
                     foreach (var serie in series)
                     {
+                        DateTime fechaEstreno;
+                        if (!string.IsNullOrEmpty(serie.first_air_date))
+                        {
+                            DateTime.TryParse(serie.first_air_date, out fechaEstreno);
+                        }
+                        else
+                        {
+                            fechaEstreno = new DateTime(1900, 1, 1); // o la que consideres por defecto
+                        }
                         Serie serieaux = new Serie
                         {
                             id = serie.id,
                             nombre = serie.name,
                             imagen = $"https://image.tmdb.org/t/p/w500{serie.poster_path}",
-                            fechaEstreno = DateTime.Parse(serie.first_air_date),
+                            fechaEstreno = fechaEstreno,
                             descripcion = serie.overview,
                             numTemporadas = serie.number_of_seasons.HasValue ? serie.number_of_seasons.Value : 1,
                             listaGeneros = serie.genre_ids
@@ -136,7 +159,7 @@ namespace WatcHive.View
                 }
                 else
                 {
-                    var series = await api.GetSeriesByGenresAsync(emocionGeneros[emocion]);
+                    var series = await api.GetSeriesByGenresAsync(emocionGenerosseries[emocion]);
                     foreach (var serie in series)
                     {
                         Serie serieaux = new Serie
@@ -192,17 +215,26 @@ namespace WatcHive.View
                 Tag = contenido
             };
 
-            try
+            string urlImagen = contenido.imagen?.Replace("https://image.tmdb.org/t/p/w500", "").Trim();
+            bool imagenValida = !string.IsNullOrWhiteSpace(urlImagen);
+            if (imagenValida)
             {
-                var bitmap = new BitmapImage();
-                bitmap.BeginInit();
-                bitmap.UriSource = new Uri(contenido.imagen);
-                bitmap.CacheOption = BitmapCacheOption.OnLoad;
-                bitmap.EndInit();
-                image.Source = bitmap;
+                try
+                {
+                    var bitmap = new BitmapImage();
+                    bitmap.BeginInit();
+                    bitmap.UriSource = new Uri(contenido.imagen);
+                    bitmap.CacheOption = BitmapCacheOption.OnLoad;
+                    bitmap.EndInit();
+                    image.Source = bitmap;
+                }
+                catch {
+                    image.Source = new BitmapImage(new Uri("pack://application:,,,/Resources/Images/imagendefault.jpg"));
+                }
             }
-            catch {
-            
+            else
+            {
+                image.Source = new BitmapImage(new Uri("pack://application:,,,/Resources/Images/imagendefault.jpg"));
             }
 
             image.MouseDown += ImageOrTitle_Click;

@@ -28,6 +28,7 @@
                     <Image Source="/Resources/Images/logoBlanco.png" Width="153" Height="48" Margin="0,15,0,50"/>
 
                     <Button Name="btnUsuarios" Content="Usuarios" Margin="10" Style="{StaticResource SidebarButtonStyle}"  Background="#C0392B" Click="btnUsuarios_Click"/>
+                    <Button x:Name="btnApp" Content="Entrar como Usuario" Style="{StaticResource SidebarButtonStyle}"  Click="btnApp_Click" Margin="10,450,10,0"/>
 
                 </StackPanel>
 

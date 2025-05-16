@@ -71,5 +71,15 @@ namespace WatcHive.Domain
                 return persistence.recomendacionUsuario(useranme, emocion, "pelicula");
             }
         }
+
+        internal string readContenidoVistoByuser(string username, int id)
+        {
+            return persistence.readContenidoVistoByUser(username, id);
+        }
+
+        internal string readEmocionByUserandID(string username, int id)
+        {
+            return persistence.readEmocionByUserandID(username, id);
+        }
     }
 }

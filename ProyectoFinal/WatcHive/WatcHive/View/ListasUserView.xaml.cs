@@ -70,6 +70,29 @@ namespace WatcHive.View
                     contenidoPendienteList.Add(se.readById(pen.id));
                 }
             }
+            ContenidoGenero contenidoGenero = new ContenidoGenero();
+            contenidoGenero.readContenidoGenero();
+            foreach (Contenido contenido in contenidoPendienteList)
+            {
+                foreach (ContenidoGenero cg in contenidoGenero.getListContenidoGenero())
+                {
+                    if (contenido.id == cg.idContenido)
+                    {
+                        contenido.listaGeneros=cg.idGeneros;
+                    }
+                }
+            }
+            foreach (Contenido contenido in contenidoVistoList)
+            {
+                foreach (ContenidoGenero cg in contenidoGenero.getListContenidoGenero())
+                {
+                    if (contenido.id == cg.idContenido)
+                    {
+                        contenido.listaGeneros = cg.idGeneros;
+                    }
+                }
+            }
+
 
             rellenarPaneles(contenidoVistoList, panelVistos, false);
             rellenarPaneles(contenidoPendienteList, panelPendientes, true);
@@ -82,14 +105,16 @@ namespace WatcHive.View
                 var stack = new StackPanel
                 {
                     Width = 150,
-                    Margin = new Thickness(10)
+                    Margin = new Thickness(10),
+                    Cursor = Cursors.Hand
                 };
 
                 Image image = new Image
                 {
                     Width = 110,
                     Margin = new Thickness(10),
-                    Stretch = Stretch.Uniform
+                    Stretch = Stretch.Uniform,
+                    Tag = contenido
                 };
 
                 try
@@ -113,6 +138,7 @@ namespace WatcHive.View
                     TextAlignment = TextAlignment.Center,
                     TextWrapping = TextWrapping.Wrap,
                     Margin = new Thickness(0, 5, 0, 0),
+                    Tag = contenido
                 };
 
                 title.MouseDown += ImageOrTitle_Click;
@@ -189,7 +215,14 @@ namespace WatcHive.View
             var element = sender as FrameworkElement;
             if (element?.Tag is Serie serieData)
             {
-                var detalleWindow = new DetalleWindow(serieData, usuarioLoged);
+                var detalleWindow = new DetalleWindow(serieData, usuarioLoged,false);
+                detalleWindow.ShowDialog();
+            }
+
+            var elementp = sender as FrameworkElement;
+            if (elementp?.Tag is Pelicula peliData)
+            {
+                var detalleWindow = new DetalleWindow(peliData, usuarioLoged,false);
                 detalleWindow.ShowDialog();
             }
         }

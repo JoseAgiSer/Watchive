@@ -165,7 +165,7 @@ namespace WatcHive.View
 
             List<TMDBMovie> resultados = await api.SearchMoviesByTitleAsync(titulo);
 
-            if (resultados != null)
+            if (resultados != null && resultados.Count != 0)
             {
                 foreach (var peli in resultados)
                 {
@@ -178,7 +178,7 @@ namespace WatcHive.View
             }
             else
             {
-                MessageBox.Show("No se encontraron resultados o hubo un error con la API.");
+                MessageBox.Show("No se encontraron resultados para el titulo '"+titulo+"'");
             }
         }
         private async void BuscarPorPlataforma(string plataforma)

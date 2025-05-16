@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -31,12 +32,13 @@ namespace WatcHive.View
         {
             string contrasenaIngresada = pwdActual.Password;
 
-            if (pwdActual.Password.Equals(usuarioLoged.password))
+            if (EncriptarContraseña( pwdActual.Password).Equals(usuarioLoged.password))
             {
                 formularioUsuario.IsEnabled = true;
                 pwdActual.IsEnabled = false;
                 ((Button)sender).IsEnabled = false;
                 btnGuardar.IsEnabled = true;
+                MessageBox.Show("Contraseña correcta. Introduce tu nueva contraseña", "Éxito", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             else
             {
@@ -54,7 +56,23 @@ namespace WatcHive.View
         {
             if (NewPassword.Password.Equals(newPasswordRep.Password))
             {
-                usuarioLoged.password = NewPassword.Password;
+                if (string.IsNullOrWhiteSpace(NewPassword.Password))
+                {
+                    MessageBox.Show("El campo 'Contraseña' es obligatorio.\nPor favor, introduzca un valor válido");
+                    return;
+                }
+                if (NewPassword.Password.Length < 6 || NewPassword.Password.Length > 16)
+                {
+                    MessageBox.Show("La contraseña debe tener entre 6 y 16 caracteres");
+                    return;
+                }
+
+                if (!NewPassword.Password.Any(char.IsLetter) || !NewPassword.Password.Any(char.IsDigit))
+                {
+                    MessageBox.Show("La contraseña debe incluir al menos una letra y un número.");
+                    return;
+                }
+                usuarioLoged.password = EncriptarContraseña( NewPassword.Password);
                 usuarioLoged.updatePass();
                 MessageBox.Show("Contraseña actualizada correctamente.");
                 this.Close();
@@ -64,7 +82,22 @@ namespace WatcHive.View
             }
         }
 
+        public string EncriptarContraseña(string contraseña)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
 
+                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(contraseña));
+
+
+                StringBuilder sb = new StringBuilder();
+                foreach (byte b in bytes)
+                {
+                    sb.Append(b.ToString("x2"));
+                }
+                return sb.ToString();
+            }
+        }
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)

@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WatcHive.Domain;
 
 namespace WatcHive.View
 {
@@ -68,6 +69,26 @@ namespace WatcHive.View
         private void btnCerrar_Click(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
+        }
+
+        private void btnApp_Click(object sender, RoutedEventArgs e)
+        {
+            Usuario user = new Usuario();
+
+            Usuario buscado = null;
+            user.readUsuario();
+            foreach (Usuario u in user.getListUsuarios())
+            {
+                if (u.username.Equals("admin"))
+                {
+                    buscado = u;
+                }
+            }
+            var mainw = new MainWindow(buscado);
+            App.Current.MainWindow = mainw;
+            mainw.Show();
+            this.Close();
+
         }
     }
 }

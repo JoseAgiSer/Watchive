@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -35,7 +36,7 @@ namespace WatcHive.View
 
             if (g.getListGenero().Count == 0) {
                 g.insertGenerosInicio();
-                u.crearAdmin();
+                u.crearAdmin(EncriptarContraseña("admin"));
                 e.insertEmocionInicio();
             }
 
@@ -63,7 +64,7 @@ namespace WatcHive.View
                 }
             }
 
-            if (buscado != null && buscado.password.Equals(passbox.Password))
+            if (buscado != null && buscado.password.Equals(EncriptarContraseña( passbox.Password)))
             {
                 if (!buscado.nombre.Equals("admin"))
                 {
@@ -87,6 +88,23 @@ namespace WatcHive.View
         {
             if (e.LeftButton == MouseButtonState.Pressed)
                 DragMove();
+        }
+
+        public string EncriptarContraseña(string contraseña)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+
+                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(contraseña));
+
+
+                StringBuilder sb = new StringBuilder();
+                foreach (byte b in bytes)
+                {
+                    sb.Append(b.ToString("x2"));
+                }
+                return sb.ToString();
+            }
         }
 
         private void RegisterText_MouseLeftButtonUp(object sender, RoutedEventArgs e)

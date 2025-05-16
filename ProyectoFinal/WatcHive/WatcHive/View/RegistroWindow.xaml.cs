@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -54,7 +55,7 @@ namespace WatcHive.View
                 
                 if (!coinciden) return;
 
-                Usuario usuario = new Usuario(username, pass, email,nombre,apellidos,numHijos,fechaNacimiento);
+                Usuario usuario = new Usuario(username, EncriptarContraseña( pass), email,nombre,apellidos,numHijos,fechaNacimiento);
                 //Comprueba si el username ya existe en la bbdd
                 if (usuario.existeUsername()) {
                     MessageBox.Show("Ya existe una cuenta registrada con ese nombre de usuario");
@@ -74,6 +75,23 @@ namespace WatcHive.View
                 return;
             }
 
+        }
+
+        public string EncriptarContraseña(string contraseña)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+
+                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(contraseña));
+
+
+                StringBuilder sb = new StringBuilder();
+                foreach (byte b in bytes)
+                {
+                    sb.Append(b.ToString("x2"));
+                }
+                return sb.ToString();
+            }
         }
 
         private void SoloNumeros_PreviewTextInput(object sender, TextCompositionEventArgs e)
@@ -98,7 +116,7 @@ namespace WatcHive.View
                 MessageBox.Show("El campo 'Apellido' es obligatorio.\nPor favor, introduzca un valor valido");
                 return false;
             }
-            if (birthdaybox.SelectedDate.Value == null || birthdaybox.SelectedDate.Value.Equals(""))
+            if (birthdaybox.SelectedDate == null || birthdaybox.SelectedDate.Value.Equals(""))
             {
                 MessageBox.Show("El campo 'Fecha de nacimiento' es obligatorio.\nPor favor, introduzca un valor valido");
                 return false;
@@ -115,12 +133,23 @@ namespace WatcHive.View
             }
             if (usernamebox.Text == null || usernamebox.Text.Equals(""))
             {
-                MessageBox.Show("El campo 'Nombre de usuario' es obligatorio.\nPor favor, introduzca un valor valido");
+                MessageBox.Show("El campo 'Nombre de usuario' es obligatorio.\nPor favor, introduzca un valor valid");
                 return false;
             }
-            if (passbox.Password == null || passbox.Password.Equals(""))
+            if (string.IsNullOrWhiteSpace(passbox.Password))
             {
-                MessageBox.Show("El campo 'Contraseña' es obligatorio.\nPor favor, introduzca un valor valido");
+                MessageBox.Show("El campo 'Contraseña' es obligatorio.\nPor favor, introduzca un valor válido");
+                return false;
+            }
+            if (passbox.Password.Length < 6 || passbox.Password.Length > 16)
+            {
+                MessageBox.Show("La contraseña debe tener entre 6 y 16 caracteres");
+                return false;
+            }
+
+            if (!passbox.Password.Any(char.IsLetter) || !passbox.Password.Any(char.IsDigit))
+            {
+                MessageBox.Show("La contraseña debe incluir al menos una letra y un número.");
                 return false;
             }
             if (repassbox.Password == null || repassbox.Password.Equals(""))

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Org.BouncyCastle.Asn1;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -74,9 +75,9 @@ namespace WatcHive.Domain
             return persistence.checkExistingUsuario(this);
         }
 
-        internal void crearAdmin()
+        internal void crearAdmin(string pass)
         {
-            persistence.insertAdmin();
+            persistence.insertAdmin(pass);
         }
 
         internal bool contenidoEnListaPendiente(int id)

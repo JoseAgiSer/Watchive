@@ -39,10 +39,7 @@ namespace WatcHive.View
 
             FechaSeleccionada = fechaVista.SelectedDate.Value;
             EemocionSeleccionada = (comboEmocion.SelectedItem as ComboBoxItem)?.Content.ToString();
-            if (EemocionSeleccionada.Equals("No recuerdo / No se"))
-            {
-                EemocionSeleccionada = "Indefinida";
-            }
+
             this.DialogResult = true;
             this.Close();
         }

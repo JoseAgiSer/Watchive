@@ -73,6 +73,7 @@ namespace WatcHive
 
         private void btnMenuPeliculas_Click(object sender, RoutedEventArgs e)
         {
+            mostrarFiltros();
             Genero g = new Genero();
             g.readGenero();
             cmbGeneros.Items.Clear();
@@ -89,6 +90,7 @@ namespace WatcHive
 
         private void btnMenuSeries_Click(object sender, RoutedEventArgs e)
         {
+            mostrarFiltros();
             Genero g = new Genero();
             g.readGenero();
             cmbGeneros.Items.Clear();
@@ -103,11 +105,28 @@ namespace WatcHive
             setBackgroundBtn(sender);
         }
 
-        private void btnMenuInicio_Click(object sender, RoutedEventArgs e)
+        private void mostrarFiltros()
         {
-            UIElementCollection elementos = sidebar.Children;
-            setBackgroundBtn(sender);
+            txtBusqueda.Visibility = Visibility.Visible;
+            cmbGeneros.Visibility = Visibility.Visible;
+            cmbPlataformas.Visibility = Visibility.Visible;
+            btnLimpiar.Visibility = Visibility.Visible;
+            btnSearch.Visibility = Visibility.Visible;
+            lblGenero.Visibility = Visibility.Visible;
+            lblPlataforma.Visibility = Visibility.Visible;
         }
+
+        private void ocultarFiltros()
+        {
+            txtBusqueda.Visibility = Visibility.Collapsed;
+            cmbGeneros.Visibility = Visibility.Collapsed;
+            cmbPlataformas.Visibility = Visibility.Collapsed;
+            btnLimpiar.Visibility = Visibility.Collapsed;
+            btnSearch.Visibility = Visibility.Collapsed;
+            lblGenero.Visibility = Visibility.Collapsed;
+            lblPlataforma.Visibility = Visibility.Collapsed;
+        }
+
 
         private void setBackgroundBtn(object sender)
         {
@@ -126,6 +145,7 @@ namespace WatcHive
 
         private void btnMenuListas_Click(object sender, RoutedEventArgs e)
         {
+            ocultarFiltros();
             MainContent.Content = new ListasUserView(usuarioLoged);
             UIElementCollection elementos = sidebar.Children;
             setBackgroundBtn(sender);
@@ -133,6 +153,7 @@ namespace WatcHive
 
         private void btnMenuEmocion_Click(object sender, RoutedEventArgs e)
         {
+            ocultarFiltros();
             MainContent.Content = new RecomendacionesView(usuarioLoged);
             UIElementCollection elementos = sidebar.Children;
             setBackgroundBtn(sender);

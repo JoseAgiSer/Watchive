@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -55,13 +56,15 @@ namespace WatcHive.View
                 {
 
                     usuarioSeleccionado.username = usernamebox.Text;
-                    usuarioSeleccionado.password = passbox.Text;
+                    usuarioSeleccionado.password = EncriptarContraseña( passbox.Text);
                     usuarioSeleccionado.nombre = nombrebox.Text;
                     usuarioSeleccionado.apellidos = apellidosbox.Text;
                     usuarioSeleccionado.email = emailbox.Text;
                     usuarioSeleccionado.numHijos = int.TryParse(numhijosbox.Text, out int hijos) ? hijos : 0;
                     usuarioSeleccionado.fechaNacimiento = birthdaybox.SelectedDate ?? DateTime.Now;
 
+                    if (!comprobarVacios())
+                        return;
                     usuarioSeleccionado.update();
 
                     tabla.Items.Refresh();
@@ -101,7 +104,7 @@ namespace WatcHive.View
                 Usuario nuevoUsuario = new Usuario
                 {
                     username = username,
-                    password = password,
+                    password = EncriptarContraseña(password),
                     nombre = nombrebox.Text,
                     apellidos = apellidosbox.Text,
                     email = emailbox.Text,
@@ -111,6 +114,10 @@ namespace WatcHive.View
 
                 if (!nuevoUsuario.existeUsername())
                 {
+
+                    if (!comprobarVacios())
+                        return; 
+
                     nuevoUsuario.insert();
 
                     listaUsuarios = (List<Usuario>)tabla.ItemsSource;
@@ -239,5 +246,73 @@ namespace WatcHive.View
 
             tabla.Items.Refresh();
         }
+
+        private bool comprobarVacios()
+        {
+            if (nombrebox.Text == null || nombrebox.Text.Equals(""))
+            {
+                MessageBox.Show("El campo 'Nombre' es obligatorio.\nPor favor, introduzca un valor valido");
+                return false;
+            }
+            if (apellidosbox.Text == null || apellidosbox.Text.Equals(""))
+            {
+                MessageBox.Show("El campo 'Apellido' es obligatorio.\nPor favor, introduzca un valor valido");
+                return false;
+            }
+            if (birthdaybox.SelectedDate == null || birthdaybox.SelectedDate.Value.Equals(""))
+            {
+                MessageBox.Show("El campo 'Fecha de nacimiento' es obligatorio.\nPor favor, introduzca un valor valido");
+                return false;
+            }
+            if (numhijosbox.Text == null || numhijosbox.Text.Equals(""))
+            {
+                MessageBox.Show("El campo 'Número de hijos' es obligatorio.\nPor favor, introduzca un valor valido");
+                return false;
+            }
+            if (emailbox.Text == null || emailbox.Text.Equals(""))
+            {
+                MessageBox.Show("El campo 'Correo electrónico' es obligatorio.\nPor favor, introduzca un valor valido");
+                return false;
+            }
+            if (usernamebox.Text == null || usernamebox.Text.Equals(""))
+            {
+                MessageBox.Show("El campo 'Nombre de usuario' es obligatorio.\nPor favor, introduzca un valor valid");
+                return false;
+            }
+            if (string.IsNullOrWhiteSpace(passbox.Text))
+            {
+                MessageBox.Show("El campo 'Contraseña' es obligatorio.\nPor favor, introduzca un valor válido");
+                return false;
+            }
+            if (passbox.Text.Length < 6 || passbox.Text.Length > 16)
+            {
+                MessageBox.Show("La contraseña debe tener entre 6 y 16 caracteres");
+                return false;
+            }
+
+            if (!passbox.Text.Any(char.IsLetter) || !passbox.Text.Any(char.IsDigit))
+            {
+                MessageBox.Show("La contraseña debe incluir al menos una letra y un número.");
+                return false;
+            }
+            return true;
+        }
+        public string EncriptarContraseña(string contraseña)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+
+                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(contraseña));
+
+
+                StringBuilder sb = new StringBuilder();
+                foreach (byte b in bytes)
+                {
+                    sb.Append(b.ToString("x2"));
+                }
+                return sb.ToString();
+            }
+        }
     }
+    
 }

@@ -26,23 +26,53 @@ namespace WatcHive.View
         private Serie serie;
         private Pelicula pelicula;
         private Contenido contenido;
+        private bool botones;
+
         public DetalleWindow(Serie serieData, Usuario usuarioLoged)
         {
-            InitializeComponent();
-            cargarDatos(serieData);
             this.usuarioLoged = usuarioLoged;
             this.serie = serieData;
             this.contenido = serieData;
+            this.botones = true;
+            InitializeComponent();
+            cargarDatos(serieData);
+
         }
 
         public DetalleWindow(Pelicula peliData, Usuario usuarioLoged)
         {
-            InitializeComponent();
-            cargarDatos(peliData);
             this.usuarioLoged = usuarioLoged;
             this.pelicula = peliData;
             this.contenido = peliData;
+            this.botones = true;
+            InitializeComponent();
+            cargarDatos(peliData);
 
+
+        }
+
+        public DetalleWindow(Serie serieData, Usuario usuarioLoged,bool boton)
+        {
+            this.usuarioLoged = usuarioLoged;
+            this.serie = serieData;
+            this.contenido = serieData;
+            this.botones = boton;
+            InitializeComponent();
+            cargarDatos(serieData);
+            btnAgreagarVistos.Visibility = Visibility.Collapsed;
+            btnAgregarPendiente.Visibility = Visibility.Collapsed;
+        }
+
+        public DetalleWindow(Pelicula peliData, Usuario usuarioLoged, bool boton)
+        {
+            this.usuarioLoged = usuarioLoged;
+            this.pelicula = peliData;
+            this.contenido = peliData;
+            this.botones = boton;
+            InitializeComponent();
+            cargarDatos(peliData);
+            btnAgreagarVistos.Visibility = Visibility.Collapsed;
+            btnAgregarPendiente.Visibility = Visibility.Collapsed;
         }
 
         private void cargarDatos(Contenido contenidoData)
@@ -80,7 +110,26 @@ namespace WatcHive.View
             else if (contenidoData is Pelicula pelicula){ 
                 txtNotaOrTemporadas.Text = "Nota media: " + pelicula.nota.ToString();
             }
+
+            if (!botones)
+            {
+                ContenidoVisto visto = new ContenidoVisto();
+                string fechaVisto = visto.readContenidoVistoByuser(usuarioLoged.username, contenidoData.id);
+                string emocion = visto.readEmocionByUserandID(usuarioLoged.username, contenidoData.id);
+                txtNotaOrTemporadas.Text = txtNotaOrTemporadas.Text + "\n\nFecha Visto: " + fechaVisto + "\nTe sentias: " + emocion;
+            }
+
+
+            //if (botones)
+            //{
             txtDescripcion.Text = contenidoData.descripcion;
+            //}
+            //else {
+            //    ContenidoVisto visto = new ContenidoVisto();
+            //    string fechaVisto = visto.readContenidoVistoByuser(usuarioLoged.username, contenidoData.id);
+            //    string emocion = visto.readEmocionByUserandID(usuarioLoged.username, contenidoData.id);
+            //    txtDescripcion.Text = contenidoData.descripcion+"\n\nFecha Visto: "+fechaVisto+"\nTe sentias: "+emocion;
+            //}
         }
 
 

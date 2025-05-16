@@ -66,9 +66,12 @@ C:\DAM2\ProyectoFinal\WatcHive\WatcHive\obj\Debug\WatcHive.pdb
 C:\DAM2\ProyectoFinal\WatcHive\WatcHive\obj\Debug\View\ListasUserView.g.cs
 C:\DAM2\ProyectoFinal\WatcHive\WatcHive\obj\Debug\View\ListasUserView.baml
 C:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\obj\Debug\WatcHive.csproj.AssemblyReference.cache
+C:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\obj\Debug\View\AdminWindow.g.cs
 C:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\obj\Debug\View\AgregarVistoWindow.g.cs
 C:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\obj\Debug\View\ConfiguracionWindow.g.cs
 C:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\obj\Debug\View\DetalleWindow.g.cs
+C:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\obj\Debug\View\GestionContenidosView.g.cs
+C:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\obj\Debug\View\GestionUsuariosView.g.cs
 C:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\obj\Debug\View\ListasUserView.g.cs
 C:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\obj\Debug\View\LoginWindow.g.cs
 C:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\obj\Debug\View\MainWindow.g.cs
@@ -120,9 +123,12 @@ C:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\bin\Debug\System.Numer
 C:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\obj\Debug\App.baml
+C:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\obj\Debug\View\AdminWindow.baml
 C:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\obj\Debug\View\AgregarVistoWindow.baml
 C:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\obj\Debug\View\ConfiguracionWindow.baml
 C:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\obj\Debug\View\DetalleWindow.baml
+C:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\obj\Debug\View\GestionContenidosView.baml
+C:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\obj\Debug\View\GestionUsuariosView.baml
 C:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\obj\Debug\View\ListasUserView.baml
 C:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\obj\Debug\View\LoginWindow.baml
 C:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\obj\Debug\View\MainWindow.baml
@@ -138,9 +144,3 @@ C:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\obj\Debug\WatcHive.csp
 C:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\obj\Debug\WatcHive.csproj.Up2Date
 C:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\obj\Debug\WatcHive.exe
 C:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\obj\Debug\WatcHive.pdb
-C:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\obj\Debug\View\AdminWindow.g.cs
-C:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\obj\Debug\View\GestionContenidosView.g.cs
-C:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\obj\Debug\View\GestionUsuariosView.g.cs
-C:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\obj\Debug\View\AdminWindow.baml
-C:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\obj\Debug\View\GestionContenidosView.baml
-C:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\obj\Debug\View\GestionUsuariosView.baml

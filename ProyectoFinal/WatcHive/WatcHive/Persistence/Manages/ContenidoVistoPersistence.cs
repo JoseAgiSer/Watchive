@@ -71,5 +71,42 @@ namespace WatcHive.Persistence.Manages
             }
             return listaGenerosRecomendaciones;
         }
+
+        internal string readContenidoVistoByUser(string username, int id)
+        {
+            List<object> lvistos = DBBroker.obtenerAgente().leer("select * from ContenidoVisto where NombreUsuario = '" + username + "' and idContenido = "+id);
+
+            foreach (List<object> fila in lvistos)
+            {
+                ContenidoVisto cv = new ContenidoVisto
+                {
+                    idContenido = Convert.ToInt32(fila[1]),
+                    nombreUsuario = fila[0].ToString(),
+                    idEmocion = Convert.ToInt32(fila[2]),
+                    fechaVisto = fila[3] != DBNull.Value ? DateTime.Parse(fila[3].ToString()) : default,
+                    puntuacion = Convert.ToInt32(fila[4])
+                };
+
+                return cv.fechaVisto.ToString();
+            }
+            return null;
+        }
+
+        internal string readEmocionByUserandID(string username, int id)
+        {
+            List<object> lvistos = DBBroker.obtenerAgente().leer(
+                "SELECT cv.*, e.NombreEmocion " +
+                "FROM ContenidoVisto cv " +
+                "JOIN Emocion e ON cv.Emocion_idEmocion = e.idEmocion " +
+                "WHERE cv.NombreUsuario = '" + username + "' AND cv.idContenido = " + id);
+
+
+            foreach (List<object> fila in lvistos)
+            {
+                string emocion = fila[5].ToString();
+                return emocion;
+            }
+            return null;
+        }
     }
 }

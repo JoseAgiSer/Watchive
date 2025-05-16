@@ -76,11 +76,11 @@
                         <StackPanel Orientation="Horizontal" Grid.Row="1" Grid.ColumnSpan="4" Margin="18,0,0,0">
                             <Button x:Name="btnLimpiar" Content="Quitar filtros" Height="28" Width="128" Style="{StaticResource LoginButtonStyle}" Click="btnLimpiar_Click"/>
                             <TextBlock Text="Plataforma:" VerticalAlignment="Center" Foreground="White" Margin="25,0,10,0"
-                                       FontWeight="Bold" FontFamily="Montserrat"/>
+                                       FontWeight="Bold" FontFamily="Montserrat" Name="lblPlataforma"/>
                             <ComboBox x:Name="cmbPlataformas" Width="150" Height="25" Margin="0,0,15,0" GotFocus="Limpiarfiltros"/>
 
                             <TextBlock Text="Género:" VerticalAlignment="Center" Foreground="White" Margin="4,0,10,0"
-                                       FontWeight="Bold" FontFamily="Montserrat"/>
+                                       FontWeight="Bold" FontFamily="Montserrat" Name="lblGenero"/>
                             <ComboBox x:Name="cmbGeneros" Height="24" Width="150" GotFocus="Limpiarfiltros"/>
 
                         </StackPanel>

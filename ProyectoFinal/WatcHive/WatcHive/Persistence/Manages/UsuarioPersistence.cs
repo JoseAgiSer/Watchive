@@ -92,11 +92,11 @@ namespace WatcHive.Persistence.Manages
             }
         }
 
-        internal void insertAdmin()
+        internal void insertAdmin(string pass)
         {
             DBBroker broker = DBBroker.obtenerAgente();
             broker.modifier("Insert into Usuarios values " +
-                "('admin','admin','admin','admin',0,'2000-02-19','admin@admin.com')");
+                "('admin','"+pass+"','admin','admin',0,'2000-02-19','admin@admin.com')");
         }
 
         internal bool contenidoEnListas(string username, int id)

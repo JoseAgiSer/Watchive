@@ -40,7 +40,6 @@
                     <ComboBoxItem Content="Relajado/a"/>
                     <ComboBoxItem Content="Motivado/a"/>
                     <ComboBoxItem Content="Aburrido/a"/>
-                    <ComboBoxItem Content="No recuerdo / No se"/>
                 </ComboBox>
             </StackPanel>
 

@@ -3,6 +3,30 @@
   "WorkspaceRootPath": "C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{E29C74FC-9CCC-4CAE-9303-D1F621B55730}|WatcHive\\WatcHive.csproj|C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\watchive\\persistence\\manages\\apimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E29C74FC-9CCC-4CAE-9303-D1F621B55730}|WatcHive\\WatcHive.csproj|solutionrelative:watchive\\persistence\\manages\\apimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E29C74FC-9CCC-4CAE-9303-D1F621B55730}|WatcHive\\WatcHive.csproj|c:\\dam2\\watchive\\watchive\\proyectofinal\\watchive\\watchive\\view\\peliculasview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E29C74FC-9CCC-4CAE-9303-D1F621B55730}|WatcHive\\WatcHive.csproj|solutionrelative:watchive\\view\\peliculasview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E29C74FC-9CCC-4CAE-9303-D1F621B55730}|WatcHive\\WatcHive.csproj|C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\watchive\\domain\\contenido.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E29C74FC-9CCC-4CAE-9303-D1F621B55730}|WatcHive\\WatcHive.csproj|solutionrelative:watchive\\domain\\contenido.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E29C74FC-9CCC-4CAE-9303-D1F621B55730}|WatcHive\\WatcHive.csproj|C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\watchive\\domain\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E29C74FC-9CCC-4CAE-9303-D1F621B55730}|WatcHive\\WatcHive.csproj|solutionrelative:watchive\\domain\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{70CAB441-CA34-4B95-9C78-8F016B336105}|LibreriaResources\\LibreriaResources.csproj|c:\\dam2\\watchive\\watchive\\proyectofinal\\watchive\\libreriaresources\\dictionarystyles.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{70CAB441-CA34-4B95-9C78-8F016B336105}|LibreriaResources\\LibreriaResources.csproj|solutionrelative:libreriaresources\\dictionarystyles.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E29C74FC-9CCC-4CAE-9303-D1F621B55730}|WatcHive\\WatcHive.csproj|c:\\dam2\\watchive\\watchive\\proyectofinal\\watchive\\watchive\\view\\loginwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{E29C74FC-9CCC-4CAE-9303-D1F621B55730}|WatcHive\\WatcHive.csproj|solutionrelative:watchive\\view\\loginwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{E29C74FC-9CCC-4CAE-9303-D1F621B55730}|WatcHive\\WatcHive.csproj|c:\\dam2\\watchive\\watchive\\proyectofinal\\watchive\\watchive\\persistence\\manages\\contenidovistopersistence.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E29C74FC-9CCC-4CAE-9303-D1F621B55730}|WatcHive\\WatcHive.csproj|solutionrelative:watchive\\persistence\\manages\\contenidovistopersistence.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -17,10 +41,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{E29C74FC-9CCC-4CAE-9303-D1F621B55730}|WatcHive\\WatcHive.csproj|C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\watchive\\persistence\\manages\\usuariopersistence.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E29C74FC-9CCC-4CAE-9303-D1F621B55730}|WatcHive\\WatcHive.csproj|solutionrelative:watchive\\persistence\\manages\\usuariopersistence.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E29C74FC-9CCC-4CAE-9303-D1F621B55730}|WatcHive\\WatcHive.csproj|C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\watchive\\domain\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E29C74FC-9CCC-4CAE-9303-D1F621B55730}|WatcHive\\WatcHive.csproj|solutionrelative:watchive\\domain\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E29C74FC-9CCC-4CAE-9303-D1F621B55730}|WatcHive\\WatcHive.csproj|C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\watchive\\view\\recomendacionesview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -59,10 +79,6 @@
       "RelativeMoniker": "D:0:0:{E29C74FC-9CCC-4CAE-9303-D1F621B55730}|WatcHive\\WatcHive.csproj|solutionrelative:watchive\\view\\seriesview.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E29C74FC-9CCC-4CAE-9303-D1F621B55730}|WatcHive\\WatcHive.csproj|C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\watchive\\domain\\contenido.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E29C74FC-9CCC-4CAE-9303-D1F621B55730}|WatcHive\\WatcHive.csproj|solutionrelative:watchive\\domain\\contenido.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{E29C74FC-9CCC-4CAE-9303-D1F621B55730}|WatcHive\\WatcHive.csproj|C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\watchive\\view\\adminwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E29C74FC-9CCC-4CAE-9303-D1F621B55730}|WatcHive\\WatcHive.csproj|solutionrelative:watchive\\view\\adminwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -89,10 +105,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{E29C74FC-9CCC-4CAE-9303-D1F621B55730}|WatcHive\\WatcHive.csproj|C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\watchive\\view\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{E29C74FC-9CCC-4CAE-9303-D1F621B55730}|WatcHive\\WatcHive.csproj|solutionrelative:watchive\\view\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{E29C74FC-9CCC-4CAE-9303-D1F621B55730}|WatcHive\\WatcHive.csproj|C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\watchive\\persistence\\manages\\apimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{E29C74FC-9CCC-4CAE-9303-D1F621B55730}|WatcHive\\WatcHive.csproj|solutionrelative:watchive\\persistence\\manages\\apimanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{E29C74FC-9CCC-4CAE-9303-D1F621B55730}|WatcHive\\WatcHive.csproj|C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\watchive\\domain\\pelicula.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -126,7 +138,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 260,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Bookmark",
@@ -134,19 +146,95 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "RecomendacionesView.xaml.cs",
-              "DocumentMoniker": "C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\WatcHive\\View\\RecomendacionesView.xaml.cs",
-              "RelativeDocumentMoniker": "WatcHive\\View\\RecomendacionesView.xaml.cs",
-              "ToolTip": "C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\WatcHive\\View\\RecomendacionesView.xaml.cs",
-              "RelativeToolTip": "WatcHive\\View\\RecomendacionesView.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADoAAAAJAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "PeliculasView.xaml.cs",
+              "DocumentMoniker": "C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\WatcHive\\View\\PeliculasView.xaml.cs",
+              "RelativeDocumentMoniker": "WatcHive\\View\\PeliculasView.xaml.cs",
+              "ToolTip": "C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\WatcHive\\View\\PeliculasView.xaml.cs",
+              "RelativeToolTip": "WatcHive\\View\\PeliculasView.xaml.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAjwDgAAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-16T17:52:54.441Z"
+              "WhenOpened": "2025-05-19T18:52:59.302Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "LoginWindow.xaml",
+              "DocumentMoniker": "C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\WatcHive\\View\\LoginWindow.xaml",
+              "RelativeDocumentMoniker": "WatcHive\\View\\LoginWindow.xaml",
+              "ToolTip": "C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\WatcHive\\View\\LoginWindow.xaml",
+              "RelativeToolTip": "WatcHive\\View\\LoginWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-19T18:38:09.082Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DictionaryStyles.xaml",
+              "DocumentMoniker": "C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\LibreriaResources\\DictionaryStyles.xaml",
+              "RelativeDocumentMoniker": "LibreriaResources\\DictionaryStyles.xaml",
+              "ToolTip": "C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\LibreriaResources\\DictionaryStyles.xaml",
+              "RelativeToolTip": "LibreriaResources\\DictionaryStyles.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-05-19T18:33:43.856Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "ListasUserView.xaml.cs",
+              "DocumentMoniker": "C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\WatcHive\\View\\ListasUserView.xaml.cs",
+              "RelativeDocumentMoniker": "WatcHive\\View\\ListasUserView.xaml.cs",
+              "ToolTip": "C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\WatcHive\\View\\ListasUserView.xaml.cs",
+              "RelativeToolTip": "WatcHive\\View\\ListasUserView.xaml.cs",
+              "ViewState": "AgIAAKcAAAAAAAAAAAAWwOAAAABSAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-16T22:02:46.06Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Usuario.cs",
+              "DocumentMoniker": "C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\WatcHive\\Domain\\Usuario.cs",
+              "RelativeDocumentMoniker": "WatcHive\\Domain\\Usuario.cs",
+              "ToolTip": "C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\WatcHive\\Domain\\Usuario.cs",
+              "RelativeToolTip": "WatcHive\\Domain\\Usuario.cs",
+              "ViewState": "AgIAAD0AAAAAAAAAAAAkwE8AAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T20:23:45.185Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Contenido.cs",
+              "DocumentMoniker": "C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\WatcHive\\Domain\\Contenido.cs",
+              "RelativeDocumentMoniker": "WatcHive\\Domain\\Contenido.cs",
+              "ToolTip": "C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\WatcHive\\Domain\\Contenido.cs",
+              "RelativeToolTip": "WatcHive\\Domain\\Contenido.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T20:33:16.547Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "APIManager.cs",
+              "DocumentMoniker": "C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\WatcHive\\Persistence\\Manages\\APIManager.cs",
+              "RelativeDocumentMoniker": "WatcHive\\Persistence\\Manages\\APIManager.cs",
+              "ToolTip": "C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\WatcHive\\Persistence\\Manages\\APIManager.cs",
+              "RelativeToolTip": "WatcHive\\Persistence\\Manages\\APIManager.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAswKMAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-14T21:51:42.036Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "ContenidoVistoPersistence.cs",
               "DocumentMoniker": "C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\WatcHive\\Persistence\\Manages\\ContenidoVistoPersistence.cs",
               "RelativeDocumentMoniker": "WatcHive\\Persistence\\Manages\\ContenidoVistoPersistence.cs",
@@ -159,31 +247,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "ListasUserView.xaml.cs",
-              "DocumentMoniker": "C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\WatcHive\\View\\ListasUserView.xaml.cs",
-              "RelativeDocumentMoniker": "WatcHive\\View\\ListasUserView.xaml.cs",
-              "ToolTip": "C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\WatcHive\\View\\ListasUserView.xaml.cs",
-              "RelativeToolTip": "WatcHive\\View\\ListasUserView.xaml.cs",
-              "ViewState": "AgIAAKcAAAAAAAAAAAAWwOAAAABSAAAAAAAAAA==",
+              "DocumentIndex": 10,
+              "Title": "RecomendacionesView.xaml.cs",
+              "DocumentMoniker": "C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\WatcHive\\View\\RecomendacionesView.xaml.cs",
+              "RelativeDocumentMoniker": "WatcHive\\View\\RecomendacionesView.xaml.cs",
+              "ToolTip": "C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\WatcHive\\View\\RecomendacionesView.xaml.cs",
+              "RelativeToolTip": "WatcHive\\View\\RecomendacionesView.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADoAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-16T22:02:46.06Z"
+              "WhenOpened": "2025-05-16T17:52:54.441Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Usuario.cs",
-              "DocumentMoniker": "C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\WatcHive\\Domain\\Usuario.cs",
-              "RelativeDocumentMoniker": "WatcHive\\Domain\\Usuario.cs",
-              "ToolTip": "C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\WatcHive\\Domain\\Usuario.cs",
-              "RelativeToolTip": "WatcHive\\Domain\\Usuario.cs",
-              "ViewState": "AgIAAD0AAAAAAAAAAAAkwE8AAAAjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T20:23:45.185Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 9,
               "Title": "UsuarioPersistence.cs",
               "DocumentMoniker": "C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\WatcHive\\Persistence\\Manages\\UsuarioPersistence.cs",
               "RelativeDocumentMoniker": "WatcHive\\Persistence\\Manages\\UsuarioPersistence.cs",
@@ -195,7 +271,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 7,
               "Title": "ConfiguracionWindow.xaml.cs",
               "DocumentMoniker": "C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\WatcHive\\View\\ConfiguracionWindow.xaml.cs",
               "RelativeDocumentMoniker": "WatcHive\\View\\ConfiguracionWindow.xaml.cs",
@@ -207,7 +283,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 8,
               "Title": "LoginWindow.xaml.cs",
               "DocumentMoniker": "C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\WatcHive\\View\\LoginWindow.xaml.cs",
               "RelativeDocumentMoniker": "WatcHive\\View\\LoginWindow.xaml.cs",
@@ -219,7 +295,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 14,
               "Title": "ContenidoVisto.cs",
               "DocumentMoniker": "C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\WatcHive\\Domain\\ContenidoVisto.cs",
               "RelativeDocumentMoniker": "WatcHive\\Domain\\ContenidoVisto.cs",
@@ -231,7 +307,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 11,
               "Title": "DetalleWindow.xaml.cs",
               "DocumentMoniker": "C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\WatcHive\\View\\DetalleWindow.xaml.cs",
               "RelativeDocumentMoniker": "WatcHive\\View\\DetalleWindow.xaml.cs",
@@ -243,7 +319,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 15,
               "Title": "GestionUsuariosView.xaml.cs",
               "DocumentMoniker": "C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\WatcHive\\View\\GestionUsuariosView.xaml.cs",
               "RelativeDocumentMoniker": "WatcHive\\View\\GestionUsuariosView.xaml.cs",
@@ -255,7 +331,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 13,
               "Title": "ContenidoGeneroPersistence.cs",
               "DocumentMoniker": "C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\WatcHive\\Persistence\\Manages\\ContenidoGeneroPersistence.cs",
               "RelativeDocumentMoniker": "WatcHive\\Persistence\\Manages\\ContenidoGeneroPersistence.cs",
@@ -267,7 +343,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 18,
               "Title": "SeriesView.xaml.cs",
               "DocumentMoniker": "C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\WatcHive\\View\\SeriesView.xaml.cs",
               "RelativeDocumentMoniker": "WatcHive\\View\\SeriesView.xaml.cs",
@@ -279,7 +355,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 16,
               "Title": "ContenidoPersistence.cs",
               "DocumentMoniker": "C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\WatcHive\\Persistence\\Manages\\ContenidoPersistence.cs",
               "RelativeDocumentMoniker": "WatcHive\\Persistence\\Manages\\ContenidoPersistence.cs",
@@ -291,7 +367,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 17,
               "Title": "ContenidoGenero.cs",
               "DocumentMoniker": "C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\WatcHive\\Domain\\ContenidoGenero.cs",
               "RelativeDocumentMoniker": "WatcHive\\Domain\\ContenidoGenero.cs",
@@ -303,7 +379,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 19,
               "Title": "AdminWindow.xaml.cs",
               "DocumentMoniker": "C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\WatcHive\\View\\AdminWindow.xaml.cs",
               "RelativeDocumentMoniker": "WatcHive\\View\\AdminWindow.xaml.cs",
@@ -315,19 +391,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "Contenido.cs",
-              "DocumentMoniker": "C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\WatcHive\\Domain\\Contenido.cs",
-              "RelativeDocumentMoniker": "WatcHive\\Domain\\Contenido.cs",
-              "ToolTip": "C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\WatcHive\\Domain\\Contenido.cs",
-              "RelativeToolTip": "WatcHive\\Domain\\Contenido.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAYwCQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T20:33:16.547Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 20,
               "Title": "AgregarVistoWindow.xaml.cs",
               "DocumentMoniker": "C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\WatcHive\\View\\AgregarVistoWindow.xaml.cs",
               "RelativeDocumentMoniker": "WatcHive\\View\\AgregarVistoWindow.xaml.cs",
@@ -339,7 +403,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 22,
               "Title": "GeneroPersistence.cs",
               "DocumentMoniker": "C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\WatcHive\\Persistence\\Manages\\GeneroPersistence.cs",
               "RelativeDocumentMoniker": "WatcHive\\Persistence\\Manages\\GeneroPersistence.cs",
@@ -351,7 +415,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 21,
               "Title": "Genero.cs",
               "DocumentMoniker": "C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\WatcHive\\Domain\\Genero.cs",
               "RelativeDocumentMoniker": "WatcHive\\Domain\\Genero.cs",
@@ -363,7 +427,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 23,
               "Title": "AgregarVistoWindow.xaml",
               "DocumentMoniker": "C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\WatcHive\\View\\AgregarVistoWindow.xaml",
               "RelativeDocumentMoniker": "WatcHive\\View\\AgregarVistoWindow.xaml",
@@ -374,7 +438,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 25,
               "Title": "MainWindow.xaml",
               "DocumentMoniker": "C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\WatcHive\\View\\MainWindow.xaml",
               "RelativeDocumentMoniker": "WatcHive\\View\\MainWindow.xaml",
@@ -385,19 +449,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "APIManager.cs",
-              "DocumentMoniker": "C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\WatcHive\\Persistence\\Manages\\APIManager.cs",
-              "RelativeDocumentMoniker": "WatcHive\\Persistence\\Manages\\APIManager.cs",
-              "ToolTip": "C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\WatcHive\\Persistence\\Manages\\APIManager.cs",
-              "RelativeToolTip": "WatcHive\\Persistence\\Manages\\APIManager.cs",
-              "ViewState": "AgIAADkAAAAAAAAAAAAzwGQAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-14T21:51:42.036Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 26,
               "Title": "Pelicula.cs",
               "DocumentMoniker": "C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\WatcHive\\Domain\\Pelicula.cs",
               "RelativeDocumentMoniker": "WatcHive\\Domain\\Pelicula.cs",
@@ -409,7 +461,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 24,
               "Title": "DetalleWindow.xaml",
               "DocumentMoniker": "C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\WatcHive\\View\\DetalleWindow.xaml",
               "RelativeDocumentMoniker": "WatcHive\\View\\DetalleWindow.xaml",
@@ -420,7 +472,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 27,
               "Title": "TMDBTVSearchResponse.cs",
               "DocumentMoniker": "C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\WatcHive\\Domain\\API\\TMDBTVSearchResponse.cs",
               "RelativeDocumentMoniker": "WatcHive\\Domain\\API\\TMDBTVSearchResponse.cs",
@@ -432,7 +484,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 28,
               "Title": "PeliculaPersistence.cs",
               "DocumentMoniker": "C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\WatcHive\\Persistence\\Manages\\PeliculaPersistence.cs",
               "RelativeDocumentMoniker": "WatcHive\\Persistence\\Manages\\PeliculaPersistence.cs",
@@ -444,7 +496,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 29,
               "Title": "SeriePersistence.cs",
               "DocumentMoniker": "C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\WatcHive\\Persistence\\Manages\\SeriePersistence.cs",
               "RelativeDocumentMoniker": "WatcHive\\Persistence\\Manages\\SeriePersistence.cs",
@@ -456,7 +508,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 30,
               "Title": "Serie.cs",
               "DocumentMoniker": "C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\WatcHive\\Domain\\Serie.cs",
               "RelativeDocumentMoniker": "WatcHive\\Domain\\Serie.cs",
@@ -468,7 +520,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 31,
               "Title": "RegistroWindow.xaml",
               "DocumentMoniker": "C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\WatcHive\\View\\RegistroWindow.xaml",
               "RelativeDocumentMoniker": "WatcHive\\View\\RegistroWindow.xaml",

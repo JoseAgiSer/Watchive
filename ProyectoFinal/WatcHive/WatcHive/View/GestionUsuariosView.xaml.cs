@@ -56,7 +56,7 @@ namespace WatcHive.View
                 {
 
                     usuarioSeleccionado.username = usernamebox.Text;
-                    usuarioSeleccionado.password = EncriptarContraseña( passbox.Text);
+                    usuarioSeleccionado.password = EncriptarContraseña( passbox.Password);
                     usuarioSeleccionado.nombre = nombrebox.Text;
                     usuarioSeleccionado.apellidos = apellidosbox.Text;
                     usuarioSeleccionado.email = emailbox.Text;
@@ -88,7 +88,7 @@ namespace WatcHive.View
             else // Modo AÑADIR
             {
                 string username = usernamebox.Text;
-                string password = passbox.Text;
+                string password = passbox.Password;
                 string numhijos = numhijosbox.Text;
                 string nombre = nombrebox.Text;
                 string apellidos = apellidosbox.Text;
@@ -174,7 +174,7 @@ namespace WatcHive.View
 
                 // Rellenar los campos con los datos del usuario seleccionado
                 usernamebox.Text = usuarioElegido.username;
-                passbox.Text = usuarioElegido.password;
+                passbox.Password = usuarioElegido.password;
                 nombrebox.Text = usuarioElegido.nombre;
                 apellidosbox.Text = usuarioElegido.apellidos;
                 emailbox.Text = usuarioElegido.email;
@@ -279,18 +279,18 @@ namespace WatcHive.View
                 MessageBox.Show("El campo 'Nombre de usuario' es obligatorio.\nPor favor, introduzca un valor valid");
                 return false;
             }
-            if (string.IsNullOrWhiteSpace(passbox.Text))
+            if (string.IsNullOrWhiteSpace(passbox.Password))
             {
                 MessageBox.Show("El campo 'Contraseña' es obligatorio.\nPor favor, introduzca un valor válido");
                 return false;
             }
-            if (passbox.Text.Length < 6 || passbox.Text.Length > 16)
+            if (passbox.Password.Length < 6 || passbox.Password.Length > 16)
             {
                 MessageBox.Show("La contraseña debe tener entre 6 y 16 caracteres");
                 return false;
             }
 
-            if (!passbox.Text.Any(char.IsLetter) || !passbox.Text.Any(char.IsDigit))
+            if (!passbox.Password.Any(char.IsLetter) || !passbox.Password.Any(char.IsDigit))
             {
                 MessageBox.Show("La contraseña debe incluir al menos una letra y un número.");
                 return false;

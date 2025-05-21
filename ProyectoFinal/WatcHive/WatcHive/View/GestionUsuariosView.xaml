@@ -68,7 +68,7 @@
                     <TextBox Name="usernamebox" Style="{StaticResource IconTextBoxStyle}" Width="300"/>
 
                     <TextBlock Text="Contraseña" Style="{StaticResource FormLabelStyle}" />
-                    <TextBox Name="passbox" Style="{StaticResource IconTextBoxStyle}" Width="300" />
+                    <PasswordBox Name="passbox" Style="{StaticResource IconPasswordBoxStyle}" Width="300" />
                 </StackPanel>
             </ScrollViewer>
         </Grid>

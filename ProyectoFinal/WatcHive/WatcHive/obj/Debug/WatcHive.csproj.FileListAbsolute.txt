@@ -66,6 +66,8 @@ C:\DAM2\ProyectoFinal\WatcHive\WatcHive\obj\Debug\WatcHive.pdb
 C:\DAM2\ProyectoFinal\WatcHive\WatcHive\obj\Debug\View\ListasUserView.g.cs
 C:\DAM2\ProyectoFinal\WatcHive\WatcHive\obj\Debug\View\ListasUserView.baml
 C:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\bin\Debug\WatcHive.exe.config
+C:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\bin\Debug\WatcHive.exe.manifest
+C:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\bin\Debug\WatcHive.application
 C:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\bin\Debug\WatcHive.exe
 C:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\bin\Debug\WatcHive.pdb
 C:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\bin\Debug\BouncyCastle.Cryptography.dll
@@ -141,10 +143,8 @@ C:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\obj\Debug\WatcHive.g.r
 C:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\obj\Debug\WatcHive.Properties.Resources.resources
 C:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\obj\Debug\WatcHive.csproj.GenerateResource.cache
 C:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\obj\Debug\WatcHive.csproj.CoreCompileInputs.cache
+C:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\obj\Debug\WatcHive.exe.manifest
+C:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\obj\Debug\WatcHive.application
 C:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\obj\Debug\WatcHive.csproj.Up2Date
 C:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\obj\Debug\WatcHive.exe
 C:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\obj\Debug\WatcHive.pdb
-C:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\bin\Debug\WatcHive.exe.manifest
-C:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\bin\Debug\WatcHive.application
-C:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\obj\Debug\WatcHive.exe.manifest
-C:\DAM2\WatcHive\Watchive\ProyectoFinal\WatcHive\WatcHive\obj\Debug\WatcHive.application

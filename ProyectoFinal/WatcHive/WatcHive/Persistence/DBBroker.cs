@@ -2,9 +2,13 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Forms;
+using MessageBox = System.Windows.Forms.MessageBox;
 
 namespace WatcHive.persistence
 {
@@ -21,12 +25,22 @@ namespace WatcHive.persistence
         /// <summary>
         /// The cadena conexion
         /// </summary>
-        private const String cadenaConexion = "server=localhost;database=watchive;uid=root;pwd=root";
+         private String cadenaConexion = "server=localhost;database=watchive;uid=root;pwd=root";
+        //private string cadenaConexion = null;
         /// <summary>
         /// Initializes a new instance of the <see cref="DBBroker"/> class.
         /// </summary>
         public DBBroker()
         {
+            //try
+            //{
+            //    cadenaConexion = File.ReadAllText("config.txt");
+            //}
+            //catch (Exception)
+            //{
+            //    MessageBox.Show("No se encontró el archivo config.txt con la cadena de conexión.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return;
+            //}
             DBBroker.conexion = new MySql.Data.MySqlClient.MySqlConnection(cadenaConexion);
         }
 
@@ -130,9 +144,16 @@ namespace WatcHive.persistence
         /// </summary>
         public void conectar()
         {
-            if (DBBroker.conexion.State == System.Data.ConnectionState.Closed)
+            try
             {
-                DBBroker.conexion.Open();
+                if (DBBroker.conexion.State == System.Data.ConnectionState.Closed)
+                {
+                    DBBroker.conexion.Open();
+                }
+            }
+            catch (Exception)
+            {
+                throw new Exception("Error al conectar a la base de datos");
             }
         }
 

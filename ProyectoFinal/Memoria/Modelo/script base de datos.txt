@@ -1,0 +1,209 @@
+-- MySQL Workbench Forward Engineering
+
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+
+-- -----------------------------------------------------
+-- Schema watchive
+-- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema watchive
+-- -----------------------------------------------------
+CREATE SCHEMA IF NOT EXISTS `watchive` DEFAULT CHARACTER SET utf8 ;
+USE `watchive` ;
+
+-- -----------------------------------------------------
+-- Table `watchive`.`Usuarios`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `watchive`.`Usuarios` (
+  `NombreUsuario` VARCHAR(16) NOT NULL,
+  `Contrasena` VARCHAR(128) NOT NULL,
+  `Nombre` VARCHAR(32) NOT NULL,
+  `Apellidos` VARCHAR(64) NOT NULL,
+  `NumeroHijos` INT(2) NOT NULL,
+  `FechaNacimiento` DATE NOT NULL,
+  `Email` VARCHAR(64) NOT NULL,
+  PRIMARY KEY (`NombreUsuario`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `watchive`.`Contenido`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `watchive`.`Contenido` (
+  `idContenido` INT NOT NULL,
+  `NombreContenido` VARCHAR(128) NOT NULL,
+  `FechaEstreno` DATE NOT NULL,
+  `Descripcion` TEXT NOT NULL,
+  `Imagen` VARCHAR(200) NOT NULL,
+  PRIMARY KEY (`idContenido`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `watchive`.`ListaPendientes`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `watchive`.`ListaPendientes` (
+  `NombreUsuario` VARCHAR(16) NOT NULL,
+  `idContenido` INT NOT NULL,
+  `Visto` TINYINT NOT NULL,
+  `FechaAdicion` DATE NOT NULL,
+  `Eliminado` TINYINT NOT NULL,
+  PRIMARY KEY (`NombreUsuario`, `idContenido`),
+  INDEX `fk_Usuarios_has_Contenido_Contenido1_idx` (`idContenido` ASC) VISIBLE,
+  INDEX `fk_Usuarios_has_Contenido_Usuarios_idx` (`NombreUsuario` ASC) VISIBLE,
+  CONSTRAINT `fk_Usuarios_has_Contenido_Usuarios`
+    FOREIGN KEY (`NombreUsuario`)
+    REFERENCES `watchive`.`Usuarios` (`NombreUsuario`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Usuarios_has_Contenido_Contenido1`
+    FOREIGN KEY (`idContenido`)
+    REFERENCES `watchive`.`Contenido` (`idContenido`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `watchive`.`Plataforma`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `watchive`.`Plataforma` (
+  `idPlataforma` INT NOT NULL,
+  `NombrePlataforma` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`idPlataforma`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `watchive`.`ContenidoPlataforma`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `watchive`.`ContenidoPlataforma` (
+  `Contenido_idContenido` INT NOT NULL,
+  `Plataforma_idPlataforma` INT NOT NULL,
+  PRIMARY KEY (`Contenido_idContenido`, `Plataforma_idPlataforma`),
+  INDEX `fk_Contenido_has_Plataforma_Plataforma1_idx` (`Plataforma_idPlataforma` ASC) VISIBLE,
+  INDEX `fk_Contenido_has_Plataforma_Contenido1_idx` (`Contenido_idContenido` ASC) VISIBLE,
+  CONSTRAINT `fk_Contenido_has_Plataforma_Contenido1`
+    FOREIGN KEY (`Contenido_idContenido`)
+    REFERENCES `watchive`.`Contenido` (`idContenido`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Contenido_has_Plataforma_Plataforma1`
+    FOREIGN KEY (`Plataforma_idPlataforma`)
+    REFERENCES `watchive`.`Plataforma` (`idPlataforma`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `watchive`.`Genero`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `watchive`.`Genero` (
+  `idGenero` INT NOT NULL,
+  `NombreGenero` VARCHAR(32) NOT NULL,
+  `Tipo` VARCHAR(16) NOT NULL,
+  PRIMARY KEY (`idGenero`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `watchive`.`ContenidoGenero`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `watchive`.`ContenidoGenero` (
+  `idContenido` INT NOT NULL,
+  `idGenero` INT NOT NULL,
+  PRIMARY KEY (`idContenido`, `idGenero`),
+  INDEX `fk_Contenido_has_Genero_Genero1_idx` (`idGenero` ASC) VISIBLE,
+  INDEX `fk_Contenido_has_Genero_Contenido1_idx` (`idContenido` ASC) VISIBLE,
+  CONSTRAINT `fk_Contenido_has_Genero_Contenido1`
+    FOREIGN KEY (`idContenido`)
+    REFERENCES `watchive`.`Contenido` (`idContenido`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Contenido_has_Genero_Genero1`
+    FOREIGN KEY (`idGenero`)
+    REFERENCES `watchive`.`Genero` (`idGenero`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `watchive`.`Emocion`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `watchive`.`Emocion` (
+  `idEmocion` INT NOT NULL,
+  `NombreEmocion` VARCHAR(32) NOT NULL,
+  PRIMARY KEY (`idEmocion`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `watchive`.`ContenidoVisto`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `watchive`.`ContenidoVisto` (
+  `NombreUsuario` VARCHAR(16) NOT NULL,
+  `idContenido` INT NOT NULL,
+  `Emocion_idEmocion` INT NOT NULL,
+  `FechaVisto` DATE NOT NULL,
+  `Puntuacion` INT NOT NULL,
+  PRIMARY KEY (`NombreUsuario`, `idContenido`, `Emocion_idEmocion`),
+  INDEX `fk_Usuarios_has_Contenido_Contenido2_idx` (`idContenido` ASC) VISIBLE,
+  INDEX `fk_Usuarios_has_Contenido_Usuarios1_idx` (`NombreUsuario` ASC) VISIBLE,
+  INDEX `fk_Usuarios_has_Contenido_Emocion1_idx` (`Emocion_idEmocion` ASC) VISIBLE,
+  CONSTRAINT `fk_Usuarios_has_Contenido_Usuarios1`
+    FOREIGN KEY (`NombreUsuario`)
+    REFERENCES `watchive`.`Usuarios` (`NombreUsuario`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Usuarios_has_Contenido_Contenido2`
+    FOREIGN KEY (`idContenido`)
+    REFERENCES `watchive`.`Contenido` (`idContenido`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Usuarios_has_Contenido_Emocion1`
+    FOREIGN KEY (`Emocion_idEmocion`)
+    REFERENCES `watchive`.`Emocion` (`idEmocion`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `watchive`.`Pelicula`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `watchive`.`Pelicula` (
+  `idContenido` INT NOT NULL,
+  `NotaMedia` DECIMAL(3,1) NOT NULL,
+  PRIMARY KEY (`idContenido`),
+  CONSTRAINT `fk_table1_Contenido1`
+    FOREIGN KEY (`idContenido`)
+    REFERENCES `watchive`.`Contenido` (`idContenido`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `watchive`.`Serie`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `watchive`.`Serie` (
+  `idContenido` INT NOT NULL,
+  `NumTemporadas` VARCHAR(45) NULL,
+  PRIMARY KEY (`idContenido`),
+  INDEX `fk_Serie_Contenido1_idx` (`idContenido` ASC) VISIBLE,
+  CONSTRAINT `fk_Serie_Contenido1`
+    FOREIGN KEY (`idContenido`)
+    REFERENCES `watchive`.`Contenido` (`idContenido`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;

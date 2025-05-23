@@ -53,12 +53,14 @@ namespace WatcHive.Persistence.Manages
         internal List<int> recomendacionUsuario(string useranme, string emocion, string tipo)
         {
             List<int> listaGenerosRecomendaciones = new List<int>();
-            string query = "select g.idGenero, AVG(cv.Puntuacion) AS promedio_puntuacion, COUNT(*) AS veces_visto," +
+            string query = "select g.idGenero, AVG(cv.Puntuacion) AS promedio_puntuacion," +
+                " COUNT(*) AS veces_visto," +
                 " AVG(cv.Puntuacion) * LOG(COUNT(*) + 1) AS relevancia " +
                 "FROM ContenidoVisto cv " +
                 "JOIN Emocion e ON cv.Emocion_idEmocion = e.idEmocion " +
                 "JOIN ContenidoGenero cg ON cv.idContenido = cg.idContenido " +
-                "JOIN Genero g ON cg.idGenero = g.idGenero WHERE cv.NombreUsuario = '"+useranme+"' AND e.NombreEmocion = '" + emocion + "'" +
+                "JOIN Genero g ON cg.idGenero = g.idGenero WHERE cv.NombreUsuario = '"
+                +useranme+"' AND e.NombreEmocion = '" + emocion + "'" +
                 "AND (g.Tipo = '" + tipo + "' OR g.Tipo ='both')" +
                 " GROUP BY g.idGenero " +
                 "ORDER BY relevancia DESC " +

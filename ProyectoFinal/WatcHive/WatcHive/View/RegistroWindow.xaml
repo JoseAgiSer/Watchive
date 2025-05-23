@@ -84,7 +84,7 @@
                             <PasswordBox Name="repassbox" Style="{StaticResource IconPasswordBoxStyle}" Width="300" />
 
                             <Button x:Name="btnLogin"
-                                Content="LOG IN"
+                                Content="REGISTRATE"
                                 Style="{StaticResource LoginButtonStyle}"
                                 Click="btnLogin_Click"
                                 Margin="0,30,0,0">

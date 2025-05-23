@@ -172,7 +172,7 @@ namespace WatcHive.View
             {
                 Usuario usuarioElegido = (Usuario)tabla.SelectedItem;
 
-                // Rellenar los campos con los datos del usuario seleccionado
+
                 usernamebox.Text = usuarioElegido.username;
                 passbox.Password = usuarioElegido.password;
                 nombrebox.Text = usuarioElegido.nombre;
@@ -181,12 +181,11 @@ namespace WatcHive.View
                 numhijosbox.Text = usuarioElegido.numHijos.ToString();
                 birthdaybox.SelectedDate = usuarioElegido.fechaNacimiento;
 
-                // Deshabilitar controles para evitar conflictos mientras se edita
+
                 btnModificar.IsEnabled = false;
                 btnEliminar.IsEnabled = false;
                 tabla.IsHitTestVisible = false;
 
-                // Cambiar el texto del botón para indicar modo actualización
                 btnAnadir.Content = "  Actualizar  ";
                 btnModificar.IsEnabled = false;
                 usernamebox.IsEnabled = false;

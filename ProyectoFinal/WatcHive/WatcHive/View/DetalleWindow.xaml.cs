@@ -148,6 +148,13 @@ namespace WatcHive.View
             bool yaExisteContenido = false;
             bool yaEnLista = false;
             bool yaVisto = false;
+            if (contenido.nombre.Contains("'"))
+            {
+                contenido.nombre = contenido.nombre.Replace("'", "");
+            }
+            else if (contenido.descripcion.Contains("'")) { 
+                contenido.descripcion = contenido.descripcion.Replace("'", "");
+            }
 
             if (contenido is Serie serieData)
             {
@@ -224,6 +231,14 @@ namespace WatcHive.View
 
                 bool yaExisteContenido = false;
                 bool yaEnLista = false;
+                if (contenido.nombre.Contains("'"))
+                {
+                    contenido.nombre = contenido.nombre.Replace("'", "");
+                }
+                else if (contenido.descripcion.Contains("'"))
+                {
+                    contenido.descripcion = contenido.descripcion.Replace("'", "");
+                }
                 if (contenido is Serie serieData)
                 {
                     yaExisteContenido = serieData.exists();

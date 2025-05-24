@@ -25,7 +25,7 @@ namespace WatcHive.persistence
         /// <summary>
         /// The cadena conexion
         /// </summary>
-         private String cadenaConexion = "server=localhost;database=watchive;uid=root;pwd=root";
+         private String cadenaConexion = "server=localhost;database=watchive;uid=root2;pwd=root";
         //private string cadenaConexion = null;
         /// <summary>
         /// Initializes a new instance of the <see cref="DBBroker"/> class.
@@ -153,7 +153,7 @@ namespace WatcHive.persistence
             }
             catch (Exception)
             {
-                throw new Exception("Error al conectar a la base de datos");
+                MessageBox.Show("No se pudo conectar a la base de datos.\nSiga los pasos de la guía de instalación.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

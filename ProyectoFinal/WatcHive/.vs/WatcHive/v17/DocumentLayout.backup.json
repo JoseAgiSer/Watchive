@@ -171,7 +171,7 @@
               "RelativeDocumentMoniker": "WatcHive\\Persistence\\DBBroker.cs",
               "ToolTip": "C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\WatcHive\\Persistence\\DBBroker.cs",
               "RelativeToolTip": "WatcHive\\Persistence\\DBBroker.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAxwBsAAABeAAAAAAAAAA==",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAowBsAAABWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-05-22T19:59:36.25Z",
               "EditorCaption": ""
@@ -185,8 +185,7 @@
               "ToolTip": "C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\WatcHive\\View\\MainWindow.xaml",
               "RelativeToolTip": "WatcHive\\View\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-05-14T21:35:35.415Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-14T21:35:35.415Z"
             },
             {
               "$type": "Document",
@@ -209,10 +208,9 @@
               "RelativeDocumentMoniker": "WatcHive\\View\\LoginWindow.xaml.cs",
               "ToolTip": "C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\WatcHive\\View\\LoginWindow.xaml.cs",
               "RelativeToolTip": "WatcHive\\View\\LoginWindow.xaml.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAAuwCEAAAAmAAAAAAAAAA==",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAYwCEAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-16T21:48:56.704Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-16T21:48:56.704Z"
             },
             {
               "$type": "Document",
@@ -236,8 +234,7 @@
               "RelativeToolTip": "WatcHive\\Domain\\Genero.cs",
               "ViewState": "AgIAABEAAAAAAAAAAIA+wCAAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T17:54:00.968Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-15T17:54:00.968Z"
             },
             {
               "$type": "Document",
@@ -249,8 +246,7 @@
               "RelativeToolTip": "WatcHive\\Persistence\\Manages\\GeneroPersistence.cs",
               "ViewState": "AgIAABoAAAAAAAAAAIAxwCMAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-15T17:54:21.961Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-15T17:54:21.961Z"
             },
             {
               "$type": "Document",
@@ -487,8 +483,7 @@
               "ToolTip": "C:\\DAM2\\WatcHive\\Watchive\\ProyectoFinal\\WatcHive\\LibreriaResources\\DictionaryStyles.xaml",
               "RelativeToolTip": "LibreriaResources\\DictionaryStyles.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-05-19T18:33:43.856Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-05-19T18:33:43.856Z"
             },
             {
               "$type": "Document",
